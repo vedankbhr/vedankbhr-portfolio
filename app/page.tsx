@@ -131,7 +131,7 @@ export default function Portfolio() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 md:mb-6 text-balance hover:scale-105 transition-transform duration-500">
-            <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent animate-gradient hover:animate-pulse">
+            <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent [&:not(:hover)]:text-foreground hover:bg-gradient-to-r hover:from-primary hover:via-accent hover:to-secondary hover:bg-clip-text hover:text-transparent animate-gradient hover:animate-pulse">
               Vedank
             </span>
             <br />
@@ -174,10 +174,10 @@ export default function Portfolio() {
 
       <section
         id="philosophy"
-        className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/30 border border-white/10 transition-all duration-1000 ${isVisible.philosophy ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/30 border border-border/50 transition-all duration-1000 ${isVisible.philosophy ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl">
+          <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-6 md:p-8 shadow-2xl">
             <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 text-balance hover:scale-105 transition-transform duration-300">
               My Philosophy
             </h2>
@@ -209,7 +209,7 @@ export default function Portfolio() {
           </div>
 
           <div className="space-y-8 md:space-y-12">
-            <Card className="border-l-4 border-l-primary relative overflow-hidden group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-background/30 border-white/20">
+            <Card className="border-l-4 border-l-primary relative overflow-hidden group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-card/40 border-border/60">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <CardHeader className="relative z-10 p-4 md:p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
@@ -288,7 +288,7 @@ export default function Portfolio() {
             </Card>
 
             <Card
-              className="group hover:shadow-xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-right backdrop-blur-md bg-background/30 border-white/20"
+              className="group hover:shadow-xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-right backdrop-blur-md bg-card/40 border-border/60"
               style={{ animationDelay: "0.2s" }}
             >
               <CardHeader className="p-4 md:p-6">
@@ -349,7 +349,7 @@ export default function Portfolio() {
             </Card>
 
             <Card
-              className="group hover:shadow-lg hover:scale-[1.02] transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-background/30 border-white/20"
+              className="group hover:shadow-lg hover:scale-[1.02] transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-card/40 border-border/60"
               style={{ animationDelay: "0.4s" }}
             >
               <CardHeader className="p-4 md:p-6">
@@ -414,11 +414,11 @@ export default function Portfolio() {
 
       <section
         id="expertise"
-        className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/20 border-y border-white/10 transition-all duration-1000 ${isVisible.expertise ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/20 border-y border-border/50 transition-all duration-1000 ${isVisible.expertise ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl mb-8 md:mb-12">
+            <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-6 md:p-8 shadow-2xl mb-8 md:mb-12">
               <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
                 Core Expertise
               </h2>
@@ -494,7 +494,7 @@ export default function Portfolio() {
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl mb-8 md:mb-12">
+            <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-6 md:p-8 shadow-2xl mb-8 md:mb-12">
               <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
                 Featured Projects
               </h2>
@@ -503,7 +503,7 @@ export default function Portfolio() {
           </div>
 
           <div className="max-w-4xl mx-auto text-center">
-            <Card className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 animate-fade-in-up backdrop-blur-md bg-background/30 border-white/20">
+            <Card className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 animate-fade-in-up backdrop-blur-md bg-card/40 border-border/60">
               <CardHeader className="p-4 md:p-6">
                 <div className="flex items-center gap-4 mb-4 justify-center">
                   <div className="p-3 bg-primary/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
@@ -572,7 +572,7 @@ export default function Portfolio() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <Card className="group hover:shadow-xl hover:scale-105 transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-background/30 border-white/20">
+            <Card className="group hover:shadow-xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-card/40 border-border/60">
               <CardHeader className="p-4 md:p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
@@ -623,7 +623,7 @@ export default function Portfolio() {
             </Card>
 
             <Card
-              className="group hover:shadow-xl hover:scale-105 transition-all duration-500 animate-slide-in-right backdrop-blur-md bg-background/30 border-white/20"
+              className="group hover:shadow-xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-right backdrop-blur-md bg-card/40 border-border/60"
               style={{ animationDelay: "0.2s" }}
             >
               <CardHeader className="p-4 md:p-6">
@@ -686,11 +686,11 @@ export default function Portfolio() {
 
       <section
         id="contact"
-        className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/30 border-t border-white/10 transition-all duration-1000 ${isVisible.contact ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/30 border-t border-border/50 transition-all duration-1000 ${isVisible.contact ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl">
+            <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-6 md:p-8 shadow-2xl">
               <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
                 Let's Build Something Amazing
               </h2>
@@ -741,7 +741,7 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <Card className="hover:shadow-xl hover:scale-105 transition-all duration-500 animate-slide-in-right backdrop-blur-md bg-background/30 border-white/20">
+            <Card className="hover:shadow-xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-right backdrop-blur-md bg-card/40 border-border/60">
               <CardHeader className="p-4 md:p-6">
                 <CardTitle className="text-lg md:text-xl">Send a Message</CardTitle>
                 <CardDescription>I'll get back to you within 24 hours</CardDescription>
