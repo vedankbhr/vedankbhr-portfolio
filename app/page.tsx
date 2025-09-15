@@ -92,43 +92,43 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background">
       <ThemeToggle />
 
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5 animate-gradient" />
         <div
-          className="absolute top-20 left-20 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float hover:scale-110 transition-transform duration-500"
+          className="absolute top-10 left-4 md:top-20 md:left-20 w-16 h-16 md:w-32 md:h-32 bg-primary/10 rounded-full blur-xl animate-float hover:scale-110 transition-transform duration-500"
           style={{ transform: `translateY(${scrollY * 0.1}px)` }}
         />
         <div
-          className="absolute bottom-20 right-20 w-48 h-48 bg-accent/10 rounded-full blur-xl animate-float hover:scale-110 transition-transform duration-700"
+          className="absolute bottom-10 right-4 md:bottom-20 md:right-20 w-24 h-24 md:w-48 md:h-48 bg-accent/10 rounded-full blur-xl animate-float hover:scale-110 transition-transform duration-700"
           style={{ animationDelay: "2s", transform: `translateY(${scrollY * -0.05}px)` }}
         />
         <div
-          className="absolute top-1/2 left-1/4 w-24 h-24 bg-secondary/10 rounded-full blur-lg animate-float hover:scale-110 transition-transform duration-700"
+          className="absolute top-1/2 left-1/4 w-12 h-12 md:w-24 md:h-24 bg-secondary/10 rounded-full blur-lg animate-float hover:scale-110 transition-transform duration-700"
           style={{ animationDelay: "4s", transform: `translateY(${scrollY * 0.08}px)` }}
         />
         <div
-          className="absolute top-1/3 right-1/3 w-16 h-16 bg-primary/5 rounded-full blur-md animate-float hover:scale-125 transition-transform duration-700"
+          className="absolute top-1/3 right-1/3 w-8 h-8 md:w-16 md:h-16 bg-primary/5 rounded-full blur-md animate-float hover:scale-125 transition-transform duration-700"
           style={{ animationDelay: "1s", transform: `translateY(${scrollY * -0.12}px)` }}
         />
         <div
-          className="absolute bottom-1/3 left-1/3 w-20 h-20 bg-accent/5 rounded-full blur-lg animate-float hover:scale-125 transition-transform duration-700"
+          className="absolute bottom-1/3 left-1/3 w-10 h-10 md:w-20 md:h-20 bg-accent/5 rounded-full blur-lg animate-float hover:scale-125 transition-transform duration-700"
           style={{ animationDelay: "3s", transform: `translateY(${scrollY * 0.15}px)` }}
         />
 
         <div
           className={`relative z-10 max-w-6xl mx-auto px-4 text-center transition-all duration-1000 ${isVisible.hero ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <Badge
               variant="secondary"
-              className="mb-4 animate-pulse-glow hover:scale-105 transition-transform duration-300"
+              className="mb-4 animate-pulse-glow hover:scale-105 transition-transform duration-300 text-xs md:text-sm"
             >
               <Sparkles className="mr-2 h-3 w-3 animate-spin" />
               Building AI-driven solutions
             </Badge>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 text-balance hover:scale-105 transition-transform duration-500">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 md:mb-6 text-balance hover:scale-105 transition-transform duration-500">
             <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent animate-gradient hover:animate-pulse">
               Vedank
             </span>
@@ -137,14 +137,14 @@ export default function Portfolio() {
           </h1>
 
           <p
-            className="text-2xl md:text-3xl text-muted-foreground mb-8 text-balance font-light animate-fade-in-up"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6 md:mb-8 text-balance font-light animate-fade-in-up"
             style={{ animationDelay: "0.3s" }}
           >
             Growth Strategist × AI Innovator × Startup Founder
           </p>
 
           <p
-            className="text-lg md:text-xl text-foreground/80 mb-12 max-w-4xl mx-auto text-pretty leading-relaxed animate-fade-in-up"
+            className="text-base md:text-lg lg:text-xl text-foreground/80 mb-8 md:mb-12 max-w-4xl mx-auto text-pretty leading-relaxed animate-fade-in-up px-4"
             style={{ animationDelay: "0.6s" }}
           >
             Transforming ambitious ideas into scalable AI-powered ventures. I bridge the gap between cutting-edge
@@ -152,12 +152,12 @@ export default function Portfolio() {
           </p>
 
           <div
-            className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up"
+            className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center animate-fade-in-up px-4"
             style={{ animationDelay: "0.9s" }}
           >
             <Button
               size="lg"
-              className="group relative overflow-hidden hover:scale-105 transition-all duration-300"
+              className="group relative overflow-hidden hover:scale-105 transition-all duration-300 w-full sm:w-auto"
               asChild
             >
               <a href="mailto:vedankbhatnagar165@gmail.com?subject=Let's Collaborate&body=Hi Vedank,%0D%0A%0D%0AI'd like to discuss a potential collaboration opportunity.%0D%0A%0D%0ABest regards,">
@@ -172,18 +172,18 @@ export default function Portfolio() {
 
       <section
         id="philosophy"
-        className={`py-24 px-4 backdrop-blur-sm bg-card/30 border border-white/10 transition-all duration-1000 ${isVisible.philosophy ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/30 border border-white/10 transition-all duration-1000 ${isVisible.philosophy ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-8 shadow-2xl">
-            <h2 className="text-4xl font-bold mb-8 text-balance hover:scale-105 transition-transform duration-300">
+          <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl">
+            <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 text-balance hover:scale-105 transition-transform duration-300">
               My Philosophy
             </h2>
-            <blockquote className="text-2xl font-light text-muted-foreground italic mb-8 text-pretty hover:text-foreground transition-colors duration-300">
+            <blockquote className="text-lg md:text-2xl font-light text-muted-foreground italic mb-6 md:mb-8 text-pretty hover:text-foreground transition-colors duration-300">
               "The future belongs to those who can navigate complexity with clarity, turning AI possibilities into
               business realities."
             </blockquote>
-            <p className="text-lg text-foreground/80 text-pretty leading-relaxed hover:text-foreground transition-colors duration-300">
+            <p className="text-base md:text-lg text-foreground/80 text-pretty leading-relaxed hover:text-foreground transition-colors duration-300">
               I believe in the power of high-context thinking—understanding not just what needs to be done, but why it
               matters and how it connects to the bigger picture. My approach combines strategic vision with hands-on
               execution, ensuring every initiative drives meaningful impact.
@@ -194,49 +194,51 @@ export default function Portfolio() {
 
       <section
         id="experience"
-        className={`py-24 px-4 transition-all duration-1000 ${isVisible.experience ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`py-16 md:py-24 px-4 transition-all duration-1000 ${isVisible.experience ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
               Professional Journey
             </h2>
-            <p className="text-xl text-muted-foreground text-pretty">
+            <p className="text-lg md:text-xl text-muted-foreground text-pretty">
               From operations excellence to AI innovation leadership
             </p>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             <Card className="border-l-4 border-l-primary relative overflow-hidden group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-background/30 border-white/20">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <CardHeader className="relative z-10">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-primary/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-                    <Rocket className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-2xl group-hover:text-primary transition-colors duration-300">
-                      Founder
-                    </CardTitle>
-                    <CardDescription className="text-lg">Stealth AI Startup • Gurgaon</CardDescription>
+              <CardHeader className="relative z-10 p-4 md:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+                  <div className="flex items-center gap-4 flex-1">
+                    <div className="p-3 bg-primary/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+                      <Rocket className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-xl md:text-2xl group-hover:text-primary transition-colors duration-300">
+                        Founder
+                      </CardTitle>
+                      <CardDescription className="text-base md:text-lg">Stealth AI Startup • Gurgaon</CardDescription>
+                    </div>
                   </div>
                   <Badge
                     variant="secondary"
-                    className="animate-pulse hover:scale-110 transition-transform duration-300"
+                    className="animate-pulse hover:scale-110 transition-transform duration-300 self-start sm:self-center"
                   >
                     <Calendar className="mr-1 h-3 w-3" />
                     Aug 2025 — Present
                   </Badge>
                 </div>
               </CardHeader>
-              <CardContent className="relative z-10">
-                <p className="text-lg text-foreground/90 mb-6 text-pretty">
+              <CardContent className="relative z-10 p-4 md:p-6 pt-0">
+                <p className="text-base md:text-lg text-foreground/90 mb-6 text-pretty">
                   Currently spearheading the conceptualization and strategic development of an AI-powered technology
                   platform that addresses complex niche operational challenges. Leading the complete entrepreneurial
                   journey from initial market research and competitive analysis to MVP development and early-stage
                   validation with potential enterprise clients.
                 </p>
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <h4 className="font-semibold mb-2 flex items-center gap-2">
                       <Target className="h-4 w-4" />
@@ -262,7 +264,7 @@ export default function Portfolio() {
                     </ul>
                   </div>
                 </div>
-                <div className="grid md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
                     <Target className="h-4 w-4 text-primary" />
                     <span className="text-sm">Strategic Development</span>
@@ -287,30 +289,37 @@ export default function Portfolio() {
               className="group hover:shadow-xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-right backdrop-blur-md bg-background/30 border-white/20"
               style={{ animationDelay: "0.2s" }}
             >
-              <CardHeader>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-accent/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-                    <Brain className="h-6 w-6 text-accent" />
+              <CardHeader className="p-4 md:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+                  <div className="flex items-center gap-4 flex-1">
+                    <div className="p-3 bg-accent/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+                      <Brain className="h-6 w-6 text-accent" />
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-xl md:text-2xl group-hover:text-accent transition-colors duration-300">
+                        Growth Manager
+                      </CardTitle>
+                      <CardDescription className="text-base md:text-lg">
+                        Soul AI (Deccan AI) • Hyderabad
+                      </CardDescription>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-2xl group-hover:text-accent transition-colors duration-300">
-                      Growth Manager
-                    </CardTitle>
-                    <CardDescription className="text-lg">Soul AI (Deccan AI) • Hyderabad</CardDescription>
-                  </div>
-                  <Badge variant="outline" className="hover:scale-110 transition-transform duration-300">
+                  <Badge
+                    variant="outline"
+                    className="hover:scale-110 transition-transform duration-300 self-start sm:self-center"
+                  >
                     <Calendar className="mr-1 h-3 w-3" />
                     Mar 2024 — Apr 2025
                   </Badge>
                 </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-lg text-foreground/90 mb-6 text-pretty">
+              <CardContent className="p-4 md:p-6 pt-0">
+                <p className="text-base md:text-lg text-foreground/90 mb-6 text-pretty">
                   Orchestrated cross-functional AI initiatives that directly accelerated enterprise sales and
                   strengthened product-market fit. Specialized in RLHF and Agentic AI systems, bridging technical
                   capabilities with client needs.
                 </p>
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="font-semibold mb-2 flex items-center gap-2">
                       <Users className="h-4 w-4" />
@@ -341,30 +350,35 @@ export default function Portfolio() {
               className="group hover:shadow-lg hover:scale-[1.02] transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-background/30 border-white/20"
               style={{ animationDelay: "0.4s" }}
             >
-              <CardHeader>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-secondary/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-                    <Building2 className="h-6 w-6 text-secondary" />
+              <CardHeader className="p-4 md:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+                  <div className="flex items-center gap-4 flex-1">
+                    <div className="p-3 bg-secondary/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+                      <Building2 className="h-6 w-6 text-secondary" />
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-lg md:text-xl group-hover:text-secondary transition-colors duration-300">
+                        Operations Associate
+                      </CardTitle>
+                      <CardDescription className="text-base">ConvertIAS • Bengaluru</CardDescription>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-xl group-hover:text-secondary transition-colors duration-300">
-                      Operations Associate
-                    </CardTitle>
-                    <CardDescription>ConvertIAS • Bengaluru</CardDescription>
-                  </div>
-                  <Badge variant="outline" className="hover:scale-110 transition-transform duration-300">
+                  <Badge
+                    variant="outline"
+                    className="hover:scale-110 transition-transform duration-300 self-start sm:self-center"
+                  >
                     <Calendar className="mr-1 h-3 w-3" />
                     Jun 2023 — Feb 2024
                   </Badge>
                 </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-lg text-foreground/90 mb-6 text-pretty">
+              <CardContent className="p-4 md:p-6 pt-0">
+                <p className="text-base md:text-lg text-foreground/90 mb-6 text-pretty">
                   Foundation-building role where I developed expertise in operational excellence, cross-departmental
                   collaboration, and data-driven decision making. Played a pivotal role in streamlining workflows and
                   implementing best practices that enhanced organizational productivity.
                 </p>
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="font-semibold mb-2 flex items-center gap-2">
                       <TrendingUp className="h-4 w-4" />
@@ -398,19 +412,21 @@ export default function Portfolio() {
 
       <section
         id="expertise"
-        className={`py-24 px-4 backdrop-blur-sm bg-card/20 border-y border-white/10 transition-all duration-1000 ${isVisible.expertise ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/20 border-y border-white/10 transition-all duration-1000 ${isVisible.expertise ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-8 shadow-2xl mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl mb-8 md:mb-12">
+              <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
                 Core Expertise
               </h2>
-              <p className="text-xl text-muted-foreground text-pretty">Technical skills meets strategic thinking</p>
+              <p className="text-lg md:text-xl text-muted-foreground text-pretty">
+                Technical skills meets strategic thinking
+              </p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
             <div className="text-center group hover:scale-105 transition-all duration-300 animate-fade-in-up">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 group-hover:bg-primary/20 transition-all duration-300">
                 <Brain className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
@@ -446,7 +462,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             {[
               "Project Management",
               "Agentic AI",
@@ -460,7 +476,7 @@ export default function Portfolio() {
               <Badge
                 key={skill}
                 variant="secondary"
-                className="text-sm py-2 px-4 hover:scale-110 hover:rotate-2 transition-all duration-300 cursor-default animate-fade-in-up"
+                className="text-xs md:text-sm py-2 px-3 md:px-4 hover:scale-110 hover:rotate-2 transition-all duration-300 cursor-default animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {skill}
@@ -472,34 +488,34 @@ export default function Portfolio() {
 
       <section
         id="education"
-        className={`py-24 px-4 transition-all duration-1000 ${isVisible.education ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`py-16 md:py-24 px-4 transition-all duration-1000 ${isVisible.education ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
               Academic Foundation
             </h2>
-            <p className="text-xl text-muted-foreground text-pretty">
+            <p className="text-lg md:text-xl text-muted-foreground text-pretty">
               Blending business acumen with interdisciplinary thinking
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <Card className="group hover:shadow-xl hover:scale-105 transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-background/30 border-white/20">
-              <CardHeader>
+              <CardHeader className="p-4 md:p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
                     <Building2 className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
+                    <CardTitle className="text-lg md:text-xl group-hover:text-primary transition-colors duration-300">
                       MBA in General Management
                     </CardTitle>
-                    <CardDescription>Masters' Union, Gurgaon</CardDescription>
+                    <CardDescription className="text-sm md:text-base">Masters' Union, Gurgaon</CardDescription>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 md:p-6 pt-0">
                 <Badge variant="outline" className="mb-4">
                   Aug 2025 — Present
                 </Badge>
@@ -539,20 +555,20 @@ export default function Portfolio() {
               className="group hover:shadow-xl hover:scale-105 transition-all duration-500 animate-slide-in-right backdrop-blur-md bg-background/30 border-white/20"
               style={{ animationDelay: "0.2s" }}
             >
-              <CardHeader>
+              <CardHeader className="p-4 md:p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
                     <Building2 className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl group-hover:text-accent transition-colors duration-300">
+                    <CardTitle className="text-lg md:text-xl group-hover:text-accent transition-colors duration-300">
                       B.A. Triple Major
                     </CardTitle>
-                    <CardDescription>Christ University, Bengaluru</CardDescription>
+                    <CardDescription className="text-sm md:text-base">Christ University, Bengaluru</CardDescription>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 md:p-6 pt-0">
                 <Badge variant="outline" className="mb-4">
                   Aug 2020 — May 2024
                 </Badge>
@@ -599,23 +615,23 @@ export default function Portfolio() {
 
       <section
         id="contact"
-        className={`py-24 px-4 backdrop-blur-sm bg-card/30 border-t border-white/10 transition-all duration-1000 ${isVisible.contact ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/30 border-t border-white/10 transition-all duration-1000 ${isVisible.contact ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-8 shadow-2xl">
-              <h2 className="text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl">
+              <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
                 Let's Build Something Amazing
               </h2>
-              <p className="text-xl text-muted-foreground text-pretty">
+              <p className="text-lg md:text-xl text-muted-foreground text-pretty">
                 Ready to discuss your next AI-driven growth initiative?
               </p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div className="animate-slide-in-left">
-              <h3 className="text-2xl font-semibold mb-6">Get In Touch</h3>
+              <h3 className="text-xl md:text-2xl font-semibold mb-6">Get In Touch</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3 group hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:rotate-12 group-hover:bg-primary/20 transition-all duration-300">
@@ -655,11 +671,11 @@ export default function Portfolio() {
             </div>
 
             <Card className="hover:shadow-xl hover:scale-105 transition-all duration-500 animate-slide-in-right backdrop-blur-md bg-background/30 border-white/20">
-              <CardHeader>
-                <CardTitle>Send a Message</CardTitle>
+              <CardHeader className="p-4 md:p-6">
+                <CardTitle className="text-lg md:text-xl">Send a Message</CardTitle>
                 <CardDescription>I'll get back to you within 24 hours</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 md:p-6 pt-0">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <Input
@@ -701,12 +717,12 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer className="py-12 px-4 bg-background border-t">
+      <footer className="py-8 md:py-12 px-4 bg-background border-t">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-muted-foreground mb-4 hover:text-foreground transition-colors duration-300">
+          <p className="text-muted-foreground mb-4 hover:text-foreground transition-colors duration-300 text-sm md:text-base">
             &copy; 2025 Vedank Bhatnagar. Crafted with precision and passion.
           </p>
-          <p className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+          <p className="text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
             Building the future, one AI solution at a time.
           </p>
         </div>
