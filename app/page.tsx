@@ -719,7 +719,7 @@ export default function Portfolio() {
                   </div>
                   <div>
                     <p className="font-medium group-hover:text-secondary transition-colors duration-300">Location</p>
-                    <p className="text-sm text-muted-foreground">Udaipur, India</p>
+                    <p className="text-sm text-muted-foreground">Gurugram, Haryana</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 group hover:scale-105 transition-all duration-300">
