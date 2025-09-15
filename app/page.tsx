@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -495,16 +496,16 @@ export default function Portfolio() {
           <div className="text-center mb-12 md:mb-16">
             <div className="backdrop-blur-md bg-background/20 border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl mb-8 md:mb-12">
               <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
-                Featured Project
+                Featured Projects
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground text-pretty">Experience my AI agent in action</p>
+              <p className="text-lg md:text-xl text-muted-foreground text-pretty">Innovative AI solutions in action</p>
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
             <Card className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 animate-fade-in-up backdrop-blur-md bg-background/30 border-white/20">
               <CardHeader className="p-4 md:p-6">
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-4 mb-4 justify-center">
                   <div className="p-3 bg-primary/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
                     <Brain className="h-6 w-6 text-primary" />
                   </div>
@@ -520,21 +521,11 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent className="p-4 md:p-6 pt-0">
                 <p className="text-base md:text-lg text-foreground/90 mb-6 text-pretty">
-                  Try out my custom AI agent built with advanced conversational capabilities. This interactive tool
-                  demonstrates my expertise in AI development and user experience design.
+                  Experience my custom AI agent built with advanced conversational capabilities. This interactive tool
+                  demonstrates expertise in AI development and user experience design.
                 </p>
 
-                <div className="relative w-full h-[500px] md:h-[600px] rounded-lg overflow-hidden border border-white/20 backdrop-blur-sm bg-background/10">
-                  <iframe
-                    src="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/4b67f532-ff9e-4396-aa5f-ae6130d270d5/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%23685FFF&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
-                    className="w-full h-full border-0"
-                    title="AI Assistant Agent"
-                    allow="microphone; camera"
-                    loading="lazy"
-                  />
-                </div>
-
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center mb-6">
                   <Badge variant="secondary" className="hover:scale-110 transition-transform duration-300">
                     Conversational AI
                   </Badge>
@@ -548,6 +539,18 @@ export default function Portfolio() {
                     Real-time Responses
                   </Badge>
                 </div>
+
+                <Button
+                  size="lg"
+                  className="group relative overflow-hidden hover:scale-105 transition-all duration-300"
+                  asChild
+                >
+                  <Link href="/projects">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Brain className="mr-2 h-4 w-4 relative z-10 group-hover:animate-bounce" />
+                    <span className="relative z-10">View All Projects</span>
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
           </div>
