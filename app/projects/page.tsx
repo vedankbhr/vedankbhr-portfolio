@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Bot, MessageSquare, Zap, Globe } from "lucide-react"
+import { ArrowLeft, Bot, MessageSquare, Zap, Globe } from 'lucide-react'
 import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 
@@ -174,6 +174,101 @@ export default function Projects() {
                   <Button variant="outline" size="sm" asChild className="flex-1 bg-transparent">
                     <a
                       href="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/4b67f532-ff9e-4396-aa5f-ae6130d270d5/embed-chat"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Globe className="mr-2 h-4 w-4" />
+                      Open Full View
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* AI Agent Tool */}
+            <Card className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 animate-fade-in-up backdrop-blur-md bg-card/40 border-border/60">
+              <div className="p-4 md:p-6 pb-0">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Bot className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold">AI Agent Tool</h3>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <Badge variant="secondary" className="text-xs">
+                    <MessageSquare className="mr-1 h-3 w-3" />
+                    Advanced Processing
+                  </Badge>
+                  <Badge variant="secondary" className="text-xs">
+                    <Zap className="mr-1 h-3 w-3" />
+                    Fast & Efficient
+                  </Badge>
+                  <Badge variant="secondary" className="text-xs">
+                    <Globe className="mr-1 h-3 w-3" />
+                    Web Integration
+                  </Badge>
+                </div>
+              </div>
+
+              <CardContent className="p-4 md:p-6 pt-0">
+                <p className="text-muted-foreground mb-6 text-sm md:text-base leading-relaxed">
+                  A powerful AI agent tool designed for intelligent automation and real-time processing. Features
+                  advanced capabilities, seamless integration, and intuitive interaction.
+                </p>
+
+                <div className="relative w-full rounded-lg overflow-hidden border border-border/60 backdrop-blur-sm bg-card/20 mb-6">
+                  {/* Mobile-specific sizing */}
+                  <div className="block sm:hidden">
+                    <iframe
+                      src="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/a7acb787-460d-4188-b9a8-3801f975e9a4/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=true&bubble_style=agent&primary_color=%23685FFF&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
+                      className="w-full h-[350px] border-0"
+                      title="AI Agent Tool - Mobile"
+                      loading="lazy"
+                      allow="microphone; camera"
+                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                    />
+                  </div>
+
+                  {/* Desktop/tablet sizing */}
+                  <div className="hidden sm:block">
+                    <iframe
+                      src="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/a7acb787-460d-4188-b9a8-3801f975e9a4/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%23685FFF&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
+                      className="w-full h-[500px] border-0"
+                      title="AI Agent Tool"
+                      loading="lazy"
+                      allow="microphone; camera"
+                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                    />
+                  </div>
+
+                  {/* Loading overlay */}
+                  <div className="absolute inset-0 bg-card/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="text-center">
+                      <Bot className="h-8 w-8 text-primary mx-auto mb-2 animate-pulse" />
+                      <p className="text-sm text-muted-foreground">AI Agent Ready</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="flex-1 group-hover:shadow-lg transition-all duration-300"
+                    onClick={() => {
+                      const iframe = document.querySelector('iframe[title*="AI Agent Tool"]') as HTMLIFrameElement
+                      if (iframe) {
+                        iframe.focus()
+                      }
+                    }}
+                  >
+                    <MessageSquare className="mr-2 h-4 w-4" />
+                    Try AI Agent
+                  </Button>
+                  <Button variant="outline" size="sm" asChild className="flex-1 bg-transparent">
+                    <a
+                      href="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/a7acb787-460d-4188-b9a8-3801f975e9a4/embed-chat"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { Providers } from "@/components/providers"
+import ParticlesBackground from "@/components/particles-background"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,7 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${inter.variable} ${jetbrainsMono.variable} antialiased`}>
-        <Providers>{children}</Providers>
+        <ParticlesBackground />
+        <div className="relative z-10">
+          <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   )
