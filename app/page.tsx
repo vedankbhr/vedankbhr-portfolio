@@ -9,22 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { ThemeToggle } from "@/components/theme-toggle"
-import {
-  Mail,
-  MapPin,
-  Linkedin,
-  Calendar,
-  Building2,
-  Sparkles,
-  Zap,
-  Target,
-  TrendingUp,
-  Brain,
-  Rocket,
-  Users,
-  BarChart3,
-  Send,
-} from "lucide-react"
+import { Mail, MapPin, Linkedin, Calendar, Building2, Sparkles, Zap, Target, TrendingUp, Brain, Rocket, Users, BarChart3, Send } from 'lucide-react'
 import { useState, useEffect, useCallback } from "react"
 
 export default function Portfolio() {
@@ -142,7 +127,7 @@ export default function Portfolio() {
             className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6 md:mb-8 text-balance font-light animate-fade-in-up"
             style={{ animationDelay: "0.3s" }}
           >
-            Growth Strategist × AI Innovator × Startup Founder
+            Growth Strategist and AI Innovator
           </p>
 
           <p
@@ -219,9 +204,9 @@ export default function Portfolio() {
                     </div>
                     <div className="flex-1">
                       <CardTitle className="text-xl md:text-2xl group-hover:text-primary transition-colors duration-300">
-                        Founder
+                        Founder's Office
                       </CardTitle>
-                      <CardDescription className="text-base md:text-lg">Stealth AI Startup • Gurgaon</CardDescription>
+                      <CardDescription className="text-base md:text-lg">Helium16 • Gurgaon</CardDescription>
                     </div>
                   </div>
                   <Badge
@@ -229,16 +214,13 @@ export default function Portfolio() {
                     className="animate-pulse hover:scale-110 transition-transform duration-300 self-start sm:self-center"
                   >
                     <Calendar className="mr-1 h-3 w-3" />
-                    Aug 2025 — Present
+                    Sept 2025 — Present
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent className="relative z-10 p-4 md:p-6 pt-0">
                 <p className="text-base md:text-lg text-foreground/90 mb-6 text-pretty">
-                  Currently spearheading the conceptualization and strategic development of an AI-powered technology
-                  platform that addresses complex niche operational challenges. Leading the complete entrepreneurial
-                  journey from initial market research and competitive analysis to MVP development and early-stage
-                  validation with potential enterprise clients.
+                  Work closely with the founder to drive strategic growth initiatives, translating high-level vision into executable plans that strengthen market presence and accelerate revenue growth.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
@@ -247,41 +229,41 @@ export default function Portfolio() {
                       Strategic Leadership
                     </h4>
                     <ul className="space-y-1 text-sm text-foreground/80">
-                      <li>• Directed end-to-end product lifecycle from concept to market</li>
-                      <li>• Analyzed complex operational challenges to define core business model</li>
-                      <li>• Developed comprehensive product roadmap and go-to-market strategy</li>
-                      <li>• Established strategic partnerships and early customer relationships</li>
+                      <li>• Serve as direct extension of founder, owning end-to-end execution</li>
+                      <li>• Drive strategic growth initiatives across product and GTM</li>
+                      <li>• Translate high-level vision into actionable plans</li>
+                      <li>• Ensure clarity, speed, and follow-through on mission-critical projects</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-semibold mb-2 flex items-center gap-2">
                       <Brain className="h-4 w-4" />
-                      Entrepreneurial Excellence
+                      Cross-Functional Execution
                     </h4>
                     <ul className="space-y-1 text-sm text-foreground/80">
-                      <li>• Built MVP from ground up with focus on scalable architecture</li>
-                      <li>• Conducted market validation through customer discovery interviews</li>
-                      <li>• Designed business model optimized for enterprise adoption</li>
-                      <li>• Established operational frameworks for rapid scaling</li>
+                      <li>• Oversee cross-functional project management</li>
+                      <li>• Coordinate with engineering, product, and business teams</li>
+                      <li>• Guarantee timely completion of high-context projects</li>
+                      <li>• Strengthen market presence and accelerate revenue growth</li>
                     </ul>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
                     <Target className="h-4 w-4 text-primary" />
-                    <span className="text-sm">Strategic Development</span>
+                    <span className="text-sm">Strategic Planning</span>
                   </div>
                   <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
                     <Zap className="h-4 w-4 text-primary" />
-                    <span className="text-sm">MVP to Market</span>
+                    <span className="text-sm">Execution Excellence</span>
                   </div>
                   <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
                     <TrendingUp className="h-4 w-4 text-primary" />
-                    <span className="text-sm">Business Model Innovation</span>
+                    <span className="text-sm">Growth Acceleration</span>
                   </div>
                   <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
                     <Users className="h-4 w-4 text-primary" />
-                    <span className="text-sm">Market Validation</span>
+                    <span className="text-sm">Team Coordination</span>
                   </div>
                 </div>
               </CardContent>
@@ -292,27 +274,18 @@ export default function Portfolio() {
               style={{ animationDelay: "0.2s" }}
             >
               <CardHeader className="p-4 md:p-6">
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-                  <div className="flex items-center gap-4 flex-1">
-                    <div className="p-3 bg-accent/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-                      <Brain className="h-6 w-6 text-accent" />
-                    </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-xl md:text-2xl group-hover:text-accent transition-colors duration-300">
-                        Growth Manager
-                      </CardTitle>
-                      <CardDescription className="text-base md:text-lg">
-                        Soul AI (Deccan AI) • Hyderabad
-                      </CardDescription>
-                    </div>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4 justify-center">
+                  <div className="p-3 bg-accent/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+                    <Brain className="h-6 w-6 text-accent" />
                   </div>
-                  <Badge
-                    variant="outline"
-                    className="hover:scale-110 transition-transform duration-300 self-start sm:self-center"
-                  >
-                    <Calendar className="mr-1 h-3 w-3" />
-                    Mar 2024 — Apr 2025
-                  </Badge>
+                  <div>
+                    <CardTitle className="text-xl md:text-2xl group-hover:text-accent transition-colors duration-300">
+                      Growth Manager
+                    </CardTitle>
+                    <CardDescription className="text-base md:text-lg">
+                      Soul AI (Deccan AI) • Hyderabad
+                    </CardDescription>
+                  </div>
                 </div>
               </CardHeader>
               <CardContent className="p-4 md:p-6 pt-0">
