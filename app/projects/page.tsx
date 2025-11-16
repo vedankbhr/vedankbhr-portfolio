@@ -97,7 +97,7 @@ export default function Projects() {
                   <div className="p-2 rounded-lg bg-primary/10">
                     <Bot className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold">AI Assistant Agent</h3>
+                  <h3 className="text-xl md:text-2xl font-bold">Meet Lucy - Your Corporate Research &amp; Pitch Assistant</h3>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -118,8 +118,7 @@ export default function Projects() {
 
               <CardContent className="p-4 md:p-6 pt-0">
                 <p className="text-muted-foreground mb-6 text-sm md:text-base leading-relaxed">
-                  An intelligent AI assistant built with advanced natural language processing capabilities. Features
-                  real-time conversation, context awareness, and seamless web integration.
+                  Lucy quickly turns a company website and a POC’s LinkedIn profile into clear reports, stakeholder insights, and pitch ideas. Built for fast-moving corporate teams, she eliminates manual research and equips you with the context you need to make smarter, more effective outreach.
                 </p>
 
                 <div className="relative w-full rounded-lg overflow-hidden border border-border/60 backdrop-blur-sm bg-card/20 mb-6">
@@ -192,7 +191,7 @@ export default function Projects() {
                   <div className="p-2 rounded-lg bg-primary/10">
                     <Bot className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold">AI Agent Tool</h3>
+                  <h3 className="text-xl md:text-2xl font-bold">Meet Jonathan - Your Interactive HR Coach </h3>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -213,8 +212,7 @@ export default function Projects() {
 
               <CardContent className="p-4 md:p-6 pt-0">
                 <p className="text-muted-foreground mb-6 text-sm md:text-base leading-relaxed">
-                  A powerful AI agent tool designed for intelligent automation and real-time processing. Features
-                  advanced capabilities, seamless integration, and intuitive interaction.
+                  Jonathan is an AI HR partner that guides managers through structured, conversational feedback collection using the SBI (Situation–Behavior–Impact) method. He asks for each SBI component step-by-step, records the discussion, and turns those notes into polished performance reviews and personalized growth charts.
                 </p>
 
                 <div className="relative w-full rounded-lg overflow-hidden border border-border/60 backdrop-blur-sm bg-card/20 mb-6">
