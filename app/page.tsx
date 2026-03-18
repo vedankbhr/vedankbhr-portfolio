@@ -127,15 +127,14 @@ export default function Portfolio() {
             className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6 md:mb-8 text-balance font-light animate-fade-in-up"
             style={{ animationDelay: "0.3s" }}
           >
-            Growth Strategist and AI Innovator
+            Product-Minded Operator & AI Innovator
           </p>
 
           <p
             className="text-base md:text-lg lg:text-xl text-foreground/80 mb-8 md:mb-12 max-w-4xl mx-auto text-pretty leading-relaxed animate-fade-in-up px-4"
             style={{ animationDelay: "0.6s" }}
           >
-            Transforming ambitious ideas into scalable AI-powered ventures. I bridge the gap between cutting-edge
-            technology and strategic business growth, turning complex challenges into breakthrough opportunities.
+            2+ years building and scaling AI products in early-stage startups. I translate founder-level ambiguity into prioritized roadmaps, MVPs, and clear success metrics through user research, data-driven experimentation, and ruthless prioritization.
           </p>
 
           <div
@@ -204,7 +203,7 @@ export default function Portfolio() {
                     </div>
                     <div className="flex-1">
                       <CardTitle className="text-xl md:text-2xl group-hover:text-primary transition-colors duration-300">
-                        Founder's Office
+                        Founder's Office - AI & Strategy
                       </CardTitle>
                       <CardDescription className="text-base md:text-lg">Helium16 • Gurgaon</CardDescription>
                     </div>
@@ -220,50 +219,50 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent className="relative z-10 p-4 md:p-6 pt-0">
                 <p className="text-base md:text-lg text-foreground/90 mb-6 text-pretty">
-                  Work closely with the founder to drive strategic growth initiatives, translating high-level vision into executable plans that strengthen market presence and accelerate revenue growth.
+                  Spearheading the pivot to HeliumLabs, managing the product roadmap for a unified, AI-assisted data annotation platform across text, audio, and vision modalities.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <h4 className="font-semibold mb-2 flex items-center gap-2">
                       <Target className="h-4 w-4" />
-                      Strategic Leadership
+                      Product Strategy & Fundraising
                     </h4>
                     <ul className="space-y-1 text-sm text-foreground/80">
-                      <li>• Serve as direct extension of founder, owning end-to-end execution</li>
-                      <li>• Drive strategic growth initiatives across product and GTM</li>
-                      <li>• Translate high-level vision into actionable plans</li>
-                      <li>• Ensure clarity, speed, and follow-through on mission-critical projects</li>
+                      <li>• Led Pre-Seed fundraising efforts with investor pitch architecture</li>
+                      <li>• Modeled unit economics demonstrating 87% gross margins</li>
+                      <li>• Designed and executed Product-Led Growth (PLG) freemium model</li>
+                      <li>• Built direct acquisition pipelines targeting academic labs and AI startups</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-semibold mb-2 flex items-center gap-2">
                       <Brain className="h-4 w-4" />
-                      Cross-Functional Execution
+                      Cross-Functional Leadership
                     </h4>
                     <ul className="space-y-1 text-sm text-foreground/80">
-                      <li>• Oversee cross-functional project management</li>
-                      <li>• Coordinate with engineering, product, and business teams</li>
-                      <li>• Guarantee timely completion of high-context projects</li>
-                      <li>• Strengthen market presence and accelerate revenue growth</li>
+                      <li>• Bridged engineering and business teams for accelerated MVP launch</li>
+                      <li>• Established data compliance standards for enterprise partnerships</li>
+                      <li>• Secured early enterprise proof-of-concept partnerships</li>
+                      <li>• Managed product roadmap across multi-modal AI annotation</li>
                     </ul>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
                     <Target className="h-4 w-4 text-primary" />
-                    <span className="text-sm">Strategic Planning</span>
+                    <span className="text-sm">Product Strategy</span>
                   </div>
                   <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
                     <Zap className="h-4 w-4 text-primary" />
-                    <span className="text-sm">Execution Excellence</span>
+                    <span className="text-sm">PLG Model</span>
                   </div>
                   <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
                     <TrendingUp className="h-4 w-4 text-primary" />
-                    <span className="text-sm">Growth Acceleration</span>
+                    <span className="text-sm">Fundraising</span>
                   </div>
                   <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
                     <Users className="h-4 w-4 text-primary" />
-                    <span className="text-sm">Team Coordination</span>
+                    <span className="text-sm">GTM Execution</span>
                   </div>
                 </div>
               </CardContent>
@@ -274,36 +273,44 @@ export default function Portfolio() {
               style={{ animationDelay: "0.2s" }}
             >
               <CardHeader className="p-4 md:p-6">
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4 justify-center">
-                  <div className="p-3 bg-accent/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-                    <Brain className="h-6 w-6 text-accent" />
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+                  <div className="flex items-center gap-4 flex-1">
+                    <div className="p-3 bg-accent/10 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+                      <Brain className="h-6 w-6 text-accent" />
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-xl md:text-2xl group-hover:text-accent transition-colors duration-300">
+                        Growth Manager
+                      </CardTitle>
+                      <CardDescription className="text-base md:text-lg">
+                        Deccan AI • Hyderabad
+                      </CardDescription>
+                    </div>
                   </div>
-                  <div>
-                    <CardTitle className="text-xl md:text-2xl group-hover:text-accent transition-colors duration-300">
-                      Growth Manager
-                    </CardTitle>
-                    <CardDescription className="text-base md:text-lg">
-                      Soul AI (Deccan AI) • Hyderabad
-                    </CardDescription>
-                  </div>
+                  <Badge
+                    variant="outline"
+                    className="hover:scale-110 transition-transform duration-300 self-start sm:self-center"
+                  >
+                    <Calendar className="mr-1 h-3 w-3" />
+                    Mar 2024 — Apr 2025
+                  </Badge>
                 </div>
               </CardHeader>
               <CardContent className="p-4 md:p-6 pt-0">
                 <p className="text-base md:text-lg text-foreground/90 mb-6 text-pretty">
-                  Orchestrated cross-functional AI initiatives that directly accelerated enterprise sales and
-                  strengthened product-market fit. Specialized in RLHF and Agentic AI systems, bridging technical
-                  capabilities with client needs.
+                  Orchestrated cross-functional AI product development across RLHF, Red Teaming, and core business operations, translating ambiguous founder-led objectives into structured product requirements and engineering deliverables.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <h4 className="font-semibold mb-2 flex items-center gap-2">
                       <Users className="h-4 w-4" />
                       Key Achievements
                     </h4>
                     <ul className="space-y-1 text-sm text-foreground/80">
-                      <li>• Built RLHF datasets that accelerated enterprise sales</li>
-                      <li>• Streamlined product pipelines for faster decision-making</li>
-                      <li>• Designed internal dashboards for strategic insights</li>
+                      <li>• Increased candidate-review throughput by 30%</li>
+                      <li>• Reduced leadership decision turnaround time by 25%</li>
+                      <li>• Processed 500,000+ data points via automated pipelines</li>
+                      <li>• Delivered Golden Datasets accelerating enterprise product-market fit</li>
                     </ul>
                   </div>
                   <div>
@@ -312,10 +319,29 @@ export default function Portfolio() {
                       Core Responsibilities
                     </h4>
                     <ul className="space-y-1 text-sm text-foreground/80">
-                      <li>• Cross-functional project orchestration</li>
-                      <li>• Sales enablement and data packaging</li>
-                      <li>• Process design and optimization</li>
+                      <li>• Architected automated eligibility and routing pipelines</li>
+                      <li>• Designed internal evaluation dashboards for AI metrics</li>
+                      <li>• Managed data packaging for RAG implementations</li>
+                      <li>• Steered zero-to-one product incubation initiatives</li>
                     </ul>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
+                    <Target className="h-4 w-4 text-accent" />
+                    <span className="text-sm">RLHF Systems</span>
+                  </div>
+                  <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
+                    <Zap className="h-4 w-4 text-accent" />
+                    <span className="text-sm">Token Economics</span>
+                  </div>
+                  <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
+                    <TrendingUp className="h-4 w-4 text-accent" />
+                    <span className="text-sm">Data Pipelines</span>
+                  </div>
+                  <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
+                    <Users className="h-4 w-4 text-accent" />
+                    <span className="text-sm">Product Incubation</span>
                   </div>
                 </div>
               </CardContent>
@@ -409,7 +435,7 @@ export default function Portfolio() {
               <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
                 AI & Technology
               </h3>
-              <p className="text-muted-foreground text-sm">RLHF, Agentic AI, AI Tools</p>
+              <p className="text-muted-foreground text-sm">RLHF, Agentic AI, LLMs</p>
             </div>
             <div
               className="text-center group hover:scale-105 transition-all duration-300 animate-fade-in-up"
@@ -433,19 +459,19 @@ export default function Portfolio() {
               <h3 className="text-xl font-semibold mb-2 group-hover:text-secondary transition-colors duration-300">
                 Operations
               </h3>
-              <p className="text-muted-foreground text-sm">Project Management, Quality Control</p>
+              <p className="text-muted-foreground text-sm">Product Management, Process Optimization</p>
             </div>
           </div>
 
           <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             {[
-              "Project Management",
+              "Product Management",
               "Agentic AI",
               "RLHF",
-              "AI Tools",
-              "Quality Control",
+              "Large Language Models",
+              "Token Economics",
               "GTM Strategy",
-              "Recruiting Strategy",
+              "Process Optimization",
               "Market Research",
             ].map((skill, index) => (
               <Badge
@@ -553,7 +579,7 @@ export default function Portfolio() {
                   </div>
                   <div>
                     <CardTitle className="text-lg md:text-xl group-hover:text-primary transition-colors duration-300">
-                      MBA in General Management
+                      PGP Rise General Management
                     </CardTitle>
                     <CardDescription className="text-sm md:text-base">Masters' Union, Gurgaon</CardDescription>
                   </div>
