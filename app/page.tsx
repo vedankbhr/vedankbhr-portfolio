@@ -161,11 +161,11 @@ export default function Portfolio() {
         className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/30 border border-border/50 transition-all duration-1000 ${isVisible.philosophy ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-8 md:p-12 shadow-2xl">
-            <h2 className="text-2xl md:text-4xl font-bold mb-8 md:mb-10 text-balance hover:scale-105 transition-transform duration-300">
+          <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-6 md:p-8 shadow-2xl">
+            <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 text-balance hover:scale-105 transition-transform duration-300">
               My Philosophy
             </h2>
-            <blockquote className="text-lg md:text-2xl font-light text-muted-foreground italic mb-8 md:mb-10 text-pretty hover:text-foreground transition-colors duration-300">
+            <blockquote className="text-lg md:text-2xl font-light text-muted-foreground italic mb-6 md:mb-8 text-pretty hover:text-foreground transition-colors duration-300">
               "The future belongs to those who can navigate complexity with clarity, turning AI possibilities into
               business realities."
             </blockquote>
@@ -183,7 +183,7 @@ export default function Portfolio() {
         className={`py-16 md:py-24 px-4 transition-all duration-1000 ${isVisible.experience ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10 md:mb-14">
+          <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
               Professional Journey
             </h2>
@@ -192,7 +192,7 @@ export default function Portfolio() {
             </p>
           </div>
 
-          <div className="space-y-10 md:space-y-16">
+          <div className="space-y-8 md:space-y-12">
             <Card className="border-l-4 border-l-primary relative overflow-hidden group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-card/40 border-border/60">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <CardHeader className="relative z-10 p-4 md:p-6">
@@ -408,54 +408,6 @@ export default function Portfolio() {
               </CardContent>
             </Card>
           </div>
-
-          {/* Internships */}
-          <div className="mt-12">
-            <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center text-muted-foreground">Earlier Experience</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="group hover:shadow-lg hover:scale-[1.01] transition-all duration-300 backdrop-blur-md bg-card/30 border-border/50">
-                <CardHeader className="p-4 md:p-5">
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-base md:text-lg group-hover:text-primary transition-colors duration-300">
-                        Content Writer
-                      </CardTitle>
-                      <CardDescription className="text-sm">Rajasthan Patrika • Udaipur</CardDescription>
-                    </div>
-                    <Badge variant="outline" className="text-xs whitespace-nowrap">
-                      Jun — Jul 2022
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-4 md:p-5 pt-0">
-                  <p className="text-sm text-foreground/80">
-                    Developed editorial content for one of India's leading Hindi daily newspapers, honing skills in research, deadline management, and audience-focused communication.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-lg hover:scale-[1.01] transition-all duration-300 backdrop-blur-md bg-card/30 border-border/50">
-                <CardHeader className="p-4 md:p-5">
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-base md:text-lg group-hover:text-accent transition-colors duration-300">
-                        Content Writer
-                      </CardTitle>
-                      <CardDescription className="text-sm">Earthy Objects • Remote</CardDescription>
-                    </div>
-                    <Badge variant="outline" className="text-xs whitespace-nowrap">
-                      Jun — Aug 2021
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-4 md:p-5 pt-0">
-                  <p className="text-sm text-foreground/80">
-                    Created compelling product descriptions and marketing content for a sustainable home goods brand, developing skills in persuasive writing and brand storytelling.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -464,8 +416,8 @@ export default function Portfolio() {
         className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/20 border-y border-border/50 transition-all duration-1000 ${isVisible.expertise ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10 md:mb-14">
-            <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-6 md:p-8 shadow-2xl mb-6 md:mb-8">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-6 md:p-8 shadow-2xl mb-8 md:mb-12">
               <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
                 Core Expertise
               </h2>
@@ -475,7 +427,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-10 md:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
             <div className="text-center group hover:scale-105 transition-all duration-300 animate-fade-in-up">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 group-hover:bg-primary/20 transition-all duration-300">
                 <Brain className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
@@ -511,7 +463,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             {[
               "Product Management",
               "Agentic AI",
@@ -540,14 +492,13 @@ export default function Portfolio() {
         className={`py-16 md:py-24 px-4 transition-all duration-1000 ${isVisible.portfolio ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10 md:mb-14">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
-              Featured Work
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground text-pretty">
-              Projects showcasing product strategy, AI integration, and user-centered design
-            </p>
-          </div>
+          <div className="text-center mb-12 md:mb-16">
+            <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-6 md:p-8 shadow-2xl mb-8 md:mb-12">
+              <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
+                Featured Projects
+              </h2>
+              <p className="text-lg md:text-xl text-muted-foreground text-pretty">Innovative AI solutions in action</p>
+            </div>
           </div>
 
           <div className="max-w-4xl mx-auto text-center">
@@ -610,8 +561,8 @@ export default function Portfolio() {
         className={`py-16 md:py-24 px-4 transition-all duration-1000 ${isVisible.education ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10 md:mb-14">
-            <h2 className="text-2xl md:text-4xl font-bold mb-5 text-balance hover:scale-105 transition-transform duration-300">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
               Academic Foundation
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground text-pretty">
@@ -621,8 +572,8 @@ export default function Portfolio() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <Card className="group hover:shadow-xl hover:scale-[1.02] transition-all duration-500 animate-slide-in-left backdrop-blur-md bg-card/40 border-border/60">
-              <CardHeader className="p-5 md:p-6">
-                <div className="flex items-center gap-4 mb-3">
+              <CardHeader className="p-4 md:p-6">
+                <div className="flex items-center gap-3 mb-2">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
                     <Building2 className="h-6 w-6 text-primary" />
                   </div>
@@ -736,8 +687,8 @@ export default function Portfolio() {
         id="contact"
         className={`py-16 md:py-24 px-4 backdrop-blur-sm bg-card/30 border-t border-border/50 transition-all duration-1000 ${isVisible.contact ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8 md:mb-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
             <div className="backdrop-blur-md bg-card/40 border border-border/60 rounded-2xl p-6 md:p-8 shadow-2xl">
               <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance hover:scale-105 transition-transform duration-300">
                 Let's Build Something Amazing
@@ -748,10 +699,10 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div className="animate-slide-in-left">
-              <h3 className="text-xl md:text-2xl font-semibold mb-8">Get In Touch</h3>
-              <div className="space-y-6">
+              <h3 className="text-xl md:text-2xl font-semibold mb-6">Get In Touch</h3>
+              <div className="space-y-4">
                 <div className="flex items-center gap-3 group hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:rotate-12 group-hover:bg-primary/20 transition-all duration-300">
                     <Mail className="h-5 w-5 text-primary" />
