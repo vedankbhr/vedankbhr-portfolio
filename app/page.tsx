@@ -169,7 +169,7 @@ export default function Portfolio() {
       </motion.section>
 
       {/* ═══════════════════════════════════
-         EXPERIENCE (Redesigned)
+         EXPERIENCE
          ═══════════════════════════════════ */}
       <section id="experience" className="py-20 md:py-32 px-4 relative">
         <div className="max-w-5xl mx-auto relative z-10">
@@ -197,34 +197,15 @@ export default function Portfolio() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-6 md:p-8 pt-0">
-                  <p className="text-foreground/80 text-base leading-relaxed mb-6">
-                    Spearheading the pivot to HeliumLabs—a unified, AI-assisted data annotation platform spanning text, audio, and vision modalities. Owning the end-to-end product lifecycle from strategic roadmapping to go-to-market execution.
-                  </p>
-
-                  {/* Modern Grid layout for accomplishments instead of bullets */}
-                  <div className="grid sm:grid-cols-2 gap-6 p-5 rounded-xl bg-muted/30 border border-border/50 mb-6">
-                    <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 uppercase tracking-wider">
-                        <Target className="h-4 w-4 text-primary" /> Product & Fundraising
-                      </h4>
-                      <ul className="space-y-2 text-sm text-foreground/75">
-                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-primary/60 mt-0.5 shrink-0" /> Modeled unit economics demonstrating 87% gross margins.</li>
-                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-primary/60 mt-0.5 shrink-0" /> Architected the investor pitch for Pre-Seed fundraising.</li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 uppercase tracking-wider">
-                        <LineChart className="h-4 w-4 text-primary" /> Growth & Execution
-                      </h4>
-                      <ul className="space-y-2 text-sm text-foreground/75">
-                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-primary/60 mt-0.5 shrink-0" /> Executed a PLG freemium model targeting academic labs.</li>
-                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-primary/60 mt-0.5 shrink-0" /> Secured early enterprise proof-of-concept partnerships.</li>
-                      </ul>
-                    </div>
-                  </div>
+                  <ul className="space-y-3 text-sm text-foreground/80 leading-relaxed mb-6 list-disc ml-5 marker:text-primary">
+                    <li><strong>Product Strategy:</strong> Spearheaded the pivot to HeliumLabs, managing the product roadmap for a unified, AI-assisted data annotation platform across text, audio, and vision.</li>
+                    <li><strong>Fundraising & Operations:</strong> Led Pre-Seed fundraising efforts, architecting the investor pitch and modeling unit economics to demonstrate 87% gross margins and instant server profitability.</li>
+                    <li><strong>Go-To-Market (GTM):</strong> Designed and executed a Product-Led Growth (PLG) freemium model, building direct acquisition pipelines targeting top-tier academic labs and AI startups.</li>
+                    <li><strong>Cross-Functional Leadership:</strong> Bridged engineering and business teams to accelerate MVP launch, establish data compliance standards, and secure early enterprise proof-of-concept partnerships.</li>
+                  </ul>
 
                   <div className="flex flex-wrap gap-2">
-                    {["0-to-1 Incubation", "PLG", "Unit Economics", "Multi-modal AI"].map((t) => (
+                    {["Product Strategy", "PLG", "Fundraising", "GTM Execution"].map((t) => (
                       <Badge key={t} variant="outline" className="text-xs bg-background/50">{t}</Badge>
                     ))}
                   </div>
@@ -253,30 +234,17 @@ export default function Portfolio() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-6 md:p-8 pt-0">
-                  <p className="text-foreground/80 text-base leading-relaxed mb-6">
-                    Orchestrated cross-functional AI product development across RLHF, Red Teaming, and core operations. Translated ambiguous founder-led objectives into structured product requirements and engineering deliverables.
+                  <p className="text-foreground/80 text-sm leading-relaxed mb-4">
+                    Orchestrated cross-functional AI product development across RLHF, Red Teaming, and core business operations, translating ambiguous founder-led objectives into structured product requirements and engineering deliverables.
                   </p>
 
-                  <div className="grid sm:grid-cols-2 gap-6 p-5 rounded-xl bg-muted/30 border border-border/50 mb-6">
-                    <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 uppercase tracking-wider">
-                        <Sparkles className="h-4 w-4 text-accent-foreground" /> AI Data & Pipelines
-                      </h4>
-                      <ul className="space-y-2 text-sm text-foreground/75">
-                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-accent-foreground/60 mt-0.5 shrink-0" /> Validated "Golden Datasets" for RLHF/Agentic workflows.</li>
-                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-accent-foreground/60 mt-0.5 shrink-0" /> Processed 500,000+ data points via automated routing pipelines.</li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 uppercase tracking-wider">
-                        <TrendingUp className="h-4 w-4 text-accent-foreground" /> Operational Impact
-                      </h4>
-                      <ul className="space-y-2 text-sm text-foreground/75">
-                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-accent-foreground/60 mt-0.5 shrink-0" /> Increased candidate-review throughput by 30%.</li>
-                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-accent-foreground/60 mt-0.5 shrink-0" /> Cut leadership decision time by 25% using custom dashboards.</li>
-                      </ul>
-                    </div>
-                  </div>
+                  <ul className="space-y-3 text-sm text-foreground/80 leading-relaxed mb-6 list-disc ml-5 marker:text-accent-foreground">
+                    <li>Developed and validated "Golden Datasets" for RLHF and Agentic workflows, establishing continuous evaluation frameworks that improved model output reliability and accelerated enterprise product-market fit.</li>
+                    <li>Architected automated eligibility and routing pipeline using structured data extraction, collaborating with engineering to process 500,000+ data points, increasing throughput by 30% while reducing manual triage.</li>
+                    <li>Designed internal evaluation dashboards to track core AI product metrics (latency, token economics) reducing leadership decision turnaround time by 25% on model iteration cycles.</li>
+                    <li>Bridged commercial strategy and AI engineering, managing data packaging for RAG implementations and defining strict execution guardrails to ensure high-fidelity user experiences.</li>
+                    <li>Steered highly autonomous, zero-to-one product incubation initiatives, managing model non-determinism and designing edge-case handling for production-grade AI deployments.</li>
+                  </ul>
 
                   <div className="flex flex-wrap gap-2">
                     {["RLHF", "Data Pipelines", "Product Incubation", "RAG"].map((t) => (
@@ -308,16 +276,13 @@ export default function Portfolio() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-6 md:p-8 pt-0">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="flex items-start gap-3 p-4 rounded-lg bg-muted/30 border border-border/40">
-                      <Layers className="h-5 w-5 text-secondary-foreground shrink-0" />
-                      <p className="text-sm text-foreground/80 leading-relaxed">Streamlined cross-departmental operational workflows, leading to measurably enhanced organizational productivity.</p>
-                    </div>
-                    <div className="flex items-start gap-3 p-4 rounded-lg bg-muted/30 border border-border/40">
-                      <Database className="h-5 w-5 text-secondary-foreground shrink-0" />
-                      <p className="text-sm text-foreground/80 leading-relaxed">Managed data reporting and implemented best practices to support high-level decision-making processes.</p>
-                    </div>
-                  </div>
+                  <ul className="space-y-3 text-sm text-foreground/80 leading-relaxed list-disc ml-5 marker:text-secondary-foreground">
+                    <li>Facilitated effective communication between different departments, promoting collaboration.</li>
+                    <li>Assisted in streamlining operational workflows, leading to enhanced productivity.</li>
+                    <li>Engaged in data management and reporting tasks to support decision-making processes.</li>
+                    <li>Contributed to the implementation of best practices in operations management.</li>
+                    <li>Supported various projects, demonstrating a commitment to achieving organisational goals.</li>
+                  </ul>
                 </CardContent>
               </Card>
             </motion.div>
@@ -428,52 +393,34 @@ export default function Portfolio() {
                 <CardHeader className="p-6 md:p-8 pb-2">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                      <Scale className="h-6 w-6 text-primary group-hover:text-primary-foreground" />
+                      <Brain className="h-6 w-6 text-primary group-hover:text-primary-foreground" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl font-bold">Coop AI</CardTitle>
-                      <CardDescription className="text-sm font-medium mt-1">Contract Lifecycle Copilot</CardDescription>
+                      <CardTitle className="text-xl font-bold">AI Assistant Agent</CardTitle>
+                      <CardDescription className="text-sm font-medium mt-1">Conversational AI</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="p-6 md:p-8 pt-4 flex-1 flex flex-col">
                   <p className="text-sm text-foreground/80 mb-8 leading-relaxed flex-1">
-                    An intelligent CLM platform designed to accelerate legal negotiations. Features automated risk detection against custom legal playbooks and an AI negotiation copilot for live document redlining.
+                    Custom AI agent with advanced conversational capabilities, demonstrating NLP expertise and user-experience design for interactive, real-time dialogue systems.
                   </p>
                   <div className="flex flex-wrap gap-2 mt-auto">
-                    {["0-to-1 Build", "Generative AI", "PRD Architecture", "GTM Strategy"].map((t) => (
+                    {["NLP", "Interactive UX", "Real-time", "Conversational AI"].map((t) => (
                       <Badge key={t} variant="secondary" className="text-xs font-medium px-3 py-1 bg-background/80">{t}</Badge>
                     ))}
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
+          </div>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-              <Card className="group hover:shadow-xl transition-all duration-500 flex flex-col h-full bg-gradient-to-br from-background to-muted/30 border-accent/20 hover:border-accent/50 overflow-hidden">
-                <CardHeader className="p-6 md:p-8 pb-2">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
-                      <Layers className="h-6 w-6 text-accent-foreground group-hover:text-accent-foreground" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl font-bold">HeliumLabs</CardTitle>
-                      <CardDescription className="text-sm font-medium mt-1">AI Annotation Platform</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6 md:p-8 pt-4 flex-1 flex flex-col">
-                  <p className="text-sm text-foreground/80 mb-8 leading-relaxed flex-1">
-                    Unified data-preparation infrastructure for AI builders. Designed the product roadmap, PLG model, and investor narrative from scratch to support complex multi-modal data processing workflows.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {["Product Roadmap", "PLG", "Multi-modal AI", "Pre-Seed"].map((t) => (
-                      <Badge key={t} variant="secondary" className="text-xs font-medium px-3 py-1 bg-background/80">{t}</Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+          <div className="mt-12 text-center">
+            <Button variant="outline" size="lg" className="gap-2" asChild>
+              <Link href="/projects">
+                View All Projects <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
