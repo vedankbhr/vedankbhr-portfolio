@@ -16,6 +16,8 @@ import {
   Calendar,
   Building2,
   Phone,
+  Target,
+  TrendingUp,
   Brain,
   Rocket,
   Send,
@@ -25,6 +27,10 @@ import {
   GraduationCap,
   PenTool,
   Scale,
+  CheckCircle2,
+  Sparkles,
+  Database,
+  LineChart
 } from "lucide-react"
 import { useState, useEffect } from "react"
 
@@ -88,6 +94,7 @@ export default function Portfolio() {
          HERO
          ═══════════════════════════════════ */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+        {/* Ambient background glows */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,hsl(var(--primary)/0.08),transparent)]" />
         <div className="absolute top-[15%] left-[10%] w-72 h-72 rounded-full bg-primary/[0.04] blur-3xl pointer-events-none" />
         <div className="absolute bottom-[10%] right-[10%] w-96 h-96 rounded-full bg-accent/[0.04] blur-3xl pointer-events-none" />
@@ -95,31 +102,41 @@ export default function Portfolio() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-5xl mx-auto text-center mt-12"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-10 max-w-5xl mx-auto text-center"
         >
+          {/* Restored and styled Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
+            className="mb-8"
+          >
+            <Badge variant="secondary" className="text-xs tracking-widest uppercase font-medium px-4 py-1.5 border border-border/60 bg-background/50 backdrop-blur-md">
+              Founder&apos;s Office · AI Products · Growth
+            </Badge>
+          </motion.div>
+
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight mb-6">
-            <span className="block">Vedank</span>
-            <span className="block bg-gradient-to-r from-primary via-primary/70 to-primary/40 bg-clip-text text-transparent">
+            <span className="block text-foreground">Vedank</span>
+            <span className="block bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent pb-2">
               Bhatnagar
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground font-light mb-4 max-w-3xl mx-auto text-balance">
-            Product-minded operator with 2+ years building and scaling AI products and GTM operations in early-stage startups.
+          <p className="text-xl md:text-2xl text-muted-foreground font-light mb-6 max-w-3xl mx-auto text-balance">
+            I translate founder-level ambiguity into shipped MVPs, validated roadmaps, and scalable revenue.
           </p>
 
           <p className="text-base md:text-lg text-foreground/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-            I translate founder-level ambiguity into prioritized roadmaps, MVPs, and clear success metrics by leading cross-functional teams through user research, data-driven experimentation, and ruthless prioritization.
+            Product operator with 2+ years scaling AI startups. Delivered RLHF data products that increased throughput by 30% and architected zero-to-one platforms for enterprise buyers.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="gap-2" asChild>
+            <Button size="lg" className="gap-2 h-12 px-8 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all" asChild>
               <a href="#contact">
                 <Mail className="h-4 w-4" /> Let&apos;s Collaborate
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2" asChild>
+            <Button size="lg" variant="outline" className="gap-2 h-12 px-8 bg-background/50 backdrop-blur-sm" asChild>
               <a href="https://www.linkedin.com/in/vedankbhr" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-4 w-4" /> LinkedIn
               </a>
@@ -127,11 +144,11 @@ export default function Portfolio() {
           </div>
 
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="mt-16"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+            className="mt-20"
           >
-            <ArrowDown className="h-5 w-5 mx-auto text-muted-foreground/40" />
+            <ArrowDown className="h-5 w-5 mx-auto text-muted-foreground/30" />
           </motion.div>
         </motion.div>
       </section>
@@ -141,7 +158,7 @@ export default function Portfolio() {
          ═══════════════════════════════════ */}
       <motion.section
         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-        id="stats" className="py-16 px-4 border-y border-border/40 bg-muted/10"
+        id="stats" className="py-16 px-4 border-y border-border/40 bg-gradient-to-b from-muted/10 to-transparent"
       >
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           <AnimatedStat value={2} suffix="+" label="Years in AI Startups" />
@@ -152,52 +169,63 @@ export default function Portfolio() {
       </motion.section>
 
       {/* ═══════════════════════════════════
-         EXPERIENCE
+         EXPERIENCE (Redesigned)
          ═══════════════════════════════════ */}
-      <section id="experience" className="py-20 md:py-28 px-4">
-        <div className="max-w-5xl mx-auto">
+      <section id="experience" className="py-20 md:py-32 px-4 relative">
+        <div className="max-w-5xl mx-auto relative z-10">
           <SectionHeader subtitle="Career" title="Employment History" />
 
           <div className="space-y-8">
             {/* ── Helium16 ── */}
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <Card className="group border-l-4 border-l-primary hover:shadow-xl transition-all duration-300">
-                <CardHeader className="p-5 md:p-8 pb-0">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}>
+              <Card className="group border border-border/50 hover:border-primary/30 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 bg-background/50 backdrop-blur-sm overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-1 h-full bg-primary/80" />
+                <CardHeader className="p-6 md:p-8 pb-4">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div className="flex items-start gap-4">
-                      <div className="p-2.5 rounded-lg bg-primary/10 shrink-0 mt-0.5">
-                        <Rocket className="h-5 w-5 text-primary" />
+                      <div className="p-3 rounded-xl bg-primary/10 text-primary shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <Rocket className="h-6 w-6" />
                       </div>
                       <div>
-                        <CardTitle className="text-xl md:text-2xl leading-tight">Founder&apos;s Office — AI & Strategy</CardTitle>
-                        <CardDescription className="text-base mt-1">Helium16 · Gurgaon</CardDescription>
+                        <CardTitle className="text-xl md:text-2xl font-bold tracking-tight mb-1">Founder&apos;s Office — AI & Strategy</CardTitle>
+                        <CardDescription className="text-base font-medium flex items-center gap-2">
+                          Helium16 <span className="w-1 h-1 rounded-full bg-muted-foreground/50" /> Gurgaon
+                        </CardDescription>
                       </div>
                     </div>
-                    <Badge variant="secondary" className="shrink-0 self-start text-xs"><Calendar className="mr-1 h-3 w-3" /> Sept 2025 — Present</Badge>
+                    <Badge variant="secondary" className="shrink-0 font-medium px-3 py-1"><Calendar className="mr-2 h-3.5 w-3.5 text-muted-foreground" /> Sept 2025 — Present</Badge>
                   </div>
                 </CardHeader>
-                <CardContent className="p-5 md:p-8 pt-5">
-                  <ul className="space-y-3 text-foreground/80 mb-6 text-sm leading-relaxed">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span><strong className="text-foreground">Product Strategy:</strong> Spearheaded the pivot to HeliumLabs, managing the product roadmap for a unified, AI-assisted data annotation platform across text, audio, and vision.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span><strong className="text-foreground">Fundraising & Operations:</strong> Led Pre-Seed fundraising efforts, architecting the investor pitch and modeling unit economics to demonstrate 87% gross margins and instant server profitability.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span><strong className="text-foreground">Go-To-Market (GTM):</strong> Designed and executed a Product-Led Growth (PLG) freemium model, building direct acquisition pipelines targeting top-tier academic labs and AI startups.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span><strong className="text-foreground">Cross-Functional Leadership:</strong> Bridged engineering and business teams to accelerate MVP launch, establish data compliance standards, and secure early enterprise proof-of-concept partnerships.</span>
-                    </li>
-                  </ul>
+                <CardContent className="p-6 md:p-8 pt-0">
+                  <p className="text-foreground/80 text-base leading-relaxed mb-6">
+                    Spearheading the pivot to HeliumLabs—a unified, AI-assisted data annotation platform spanning text, audio, and vision modalities. Owning the end-to-end product lifecycle from strategic roadmapping to go-to-market execution.
+                  </p>
+
+                  {/* Modern Grid layout for accomplishments instead of bullets */}
+                  <div className="grid sm:grid-cols-2 gap-6 p-5 rounded-xl bg-muted/30 border border-border/50 mb-6">
+                    <div className="space-y-3">
+                      <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 uppercase tracking-wider">
+                        <Target className="h-4 w-4 text-primary" /> Product & Fundraising
+                      </h4>
+                      <ul className="space-y-2 text-sm text-foreground/75">
+                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-primary/60 mt-0.5 shrink-0" /> Modeled unit economics demonstrating 87% gross margins.</li>
+                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-primary/60 mt-0.5 shrink-0" /> Architected the investor pitch for Pre-Seed fundraising.</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 uppercase tracking-wider">
+                        <LineChart className="h-4 w-4 text-primary" /> Growth & Execution
+                      </h4>
+                      <ul className="space-y-2 text-sm text-foreground/75">
+                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-primary/60 mt-0.5 shrink-0" /> Executed a PLG freemium model targeting academic labs.</li>
+                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-primary/60 mt-0.5 shrink-0" /> Secured early enterprise proof-of-concept partnerships.</li>
+                      </ul>
+                    </div>
+                  </div>
+
                   <div className="flex flex-wrap gap-2">
-                    {["Product Strategy", "PLG", "Fundraising", "GTM Execution"].map((t) => (
-                      <Badge key={t} variant="outline" className="text-xs font-normal">{t}</Badge>
+                    {["0-to-1 Incubation", "PLG", "Unit Economics", "Multi-modal AI"].map((t) => (
+                      <Badge key={t} variant="outline" className="text-xs bg-background/50">{t}</Badge>
                     ))}
                   </div>
                 </CardContent>
@@ -205,51 +233,54 @@ export default function Portfolio() {
             </motion.div>
 
             {/* ── Deccan AI ── */}
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-              <Card className="group hover:shadow-xl transition-all duration-300">
-                <CardHeader className="p-5 md:p-8 pb-0">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: 0.1 }}>
+              <Card className="group border border-border/50 hover:border-accent/30 shadow-sm hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 bg-background/50 backdrop-blur-sm overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-1 h-full bg-accent/80" />
+                <CardHeader className="p-6 md:p-8 pb-4">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div className="flex items-start gap-4">
-                      <div className="p-2.5 rounded-lg bg-accent/10 shrink-0 mt-0.5">
-                        <Brain className="h-5 w-5 text-accent-foreground" />
+                      <div className="p-3 rounded-xl bg-accent/10 text-accent-foreground shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <Brain className="h-6 w-6" />
                       </div>
                       <div>
-                        <CardTitle className="text-xl md:text-2xl leading-tight">Growth Manager</CardTitle>
-                        <CardDescription className="text-base mt-1">Deccan AI · Hyderabad</CardDescription>
+                        <CardTitle className="text-xl md:text-2xl font-bold tracking-tight mb-1">Growth Manager</CardTitle>
+                        <CardDescription className="text-base font-medium flex items-center gap-2">
+                          Deccan AI <span className="w-1 h-1 rounded-full bg-muted-foreground/50" /> Hyderabad
+                        </CardDescription>
                       </div>
                     </div>
-                    <Badge variant="outline" className="shrink-0 self-start text-xs"><Calendar className="mr-1 h-3 w-3" /> Mar 2024 — Apr 2025</Badge>
+                    <Badge variant="secondary" className="shrink-0 font-medium px-3 py-1"><Calendar className="mr-2 h-3.5 w-3.5 text-muted-foreground" /> Mar 2024 — Apr 2025</Badge>
                   </div>
                 </CardHeader>
-                <CardContent className="p-5 md:p-8 pt-5">
-                  <p className="text-foreground/80 mb-4 text-sm leading-relaxed font-medium">
-                    Orchestrated cross-functional AI product development across RLHF, Red Teaming, and core business operations, translating ambiguous founder-led objectives into structured product requirements and engineering deliverables.
+                <CardContent className="p-6 md:p-8 pt-0">
+                  <p className="text-foreground/80 text-base leading-relaxed mb-6">
+                    Orchestrated cross-functional AI product development across RLHF, Red Teaming, and core operations. Translated ambiguous founder-led objectives into structured product requirements and engineering deliverables.
                   </p>
-                  <ul className="space-y-3 text-foreground/80 mb-6 text-sm leading-relaxed">
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent-foreground mt-1">•</span>
-                      <span>Developed and validated &quot;Golden Datasets&quot; for RLHF and Agentic workflows, establishing continuous evaluation frameworks that improved model output reliability and accelerated enterprise product-market fit.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent-foreground mt-1">•</span>
-                      <span>Architected automated eligibility and routing pipeline using structured data extraction, collaborating with engineering to process 500,000+ data points, increasing throughput by 30% while reducing manual triage.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent-foreground mt-1">•</span>
-                      <span>Designed internal evaluation dashboards to track core AI product metrics (latency, token economics) reducing leadership decision turnaround time by 25% on model iteration cycles.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent-foreground mt-1">•</span>
-                      <span>Bridged commercial strategy and AI engineering, managing data packaging for RAG implementations and defining strict execution guardrails to ensure high-fidelity user experiences.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent-foreground mt-1">•</span>
-                      <span>Steered highly autonomous, zero-to-one product incubation initiatives, managing model non-determinism and designing edge-case handling for production-grade AI deployments.</span>
-                    </li>
-                  </ul>
+
+                  <div className="grid sm:grid-cols-2 gap-6 p-5 rounded-xl bg-muted/30 border border-border/50 mb-6">
+                    <div className="space-y-3">
+                      <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 uppercase tracking-wider">
+                        <Sparkles className="h-4 w-4 text-accent-foreground" /> AI Data & Pipelines
+                      </h4>
+                      <ul className="space-y-2 text-sm text-foreground/75">
+                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-accent-foreground/60 mt-0.5 shrink-0" /> Validated "Golden Datasets" for RLHF/Agentic workflows.</li>
+                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-accent-foreground/60 mt-0.5 shrink-0" /> Processed 500,000+ data points via automated routing pipelines.</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 uppercase tracking-wider">
+                        <TrendingUp className="h-4 w-4 text-accent-foreground" /> Operational Impact
+                      </h4>
+                      <ul className="space-y-2 text-sm text-foreground/75">
+                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-accent-foreground/60 mt-0.5 shrink-0" /> Increased candidate-review throughput by 30%.</li>
+                        <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-accent-foreground/60 mt-0.5 shrink-0" /> Cut leadership decision time by 25% using custom dashboards.</li>
+                      </ul>
+                    </div>
+                  </div>
+
                   <div className="flex flex-wrap gap-2">
-                    {["RLHF & Red Teaming", "Agentic Workflows", "Data Pipelines", "Product Incubation"].map((t) => (
-                      <Badge key={t} variant="outline" className="text-xs font-normal">{t}</Badge>
+                    {["RLHF", "Data Pipelines", "Product Incubation", "RAG"].map((t) => (
+                      <Badge key={t} variant="outline" className="text-xs bg-background/50">{t}</Badge>
                     ))}
                   </div>
                 </CardContent>
@@ -257,41 +288,36 @@ export default function Portfolio() {
             </motion.div>
 
             {/* ── ConvertIAS ── */}
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-              <Card className="group hover:shadow-xl transition-all duration-300">
-                <CardHeader className="p-5 md:p-8 pb-0">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: 0.2 }}>
+              <Card className="group border border-border/50 hover:border-secondary-foreground/30 shadow-sm hover:shadow-xl transition-all duration-500 bg-background/50 backdrop-blur-sm overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-1 h-full bg-secondary-foreground/60" />
+                <CardHeader className="p-6 md:p-8 pb-4">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div className="flex items-start gap-4">
-                      <div className="p-2.5 rounded-lg bg-secondary/10 shrink-0 mt-0.5">
-                        <Building2 className="h-5 w-5 text-secondary-foreground" />
+                      <div className="p-3 rounded-xl bg-secondary shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <Building2 className="h-6 w-6 text-secondary-foreground" />
                       </div>
                       <div>
-                        <CardTitle className="text-xl md:text-2xl leading-tight">Operations Associate</CardTitle>
-                        <CardDescription className="text-base mt-1">ConvertIAS · Bengaluru</CardDescription>
+                        <CardTitle className="text-xl md:text-2xl font-bold tracking-tight mb-1">Operations Associate</CardTitle>
+                        <CardDescription className="text-base font-medium flex items-center gap-2">
+                          ConvertIAS <span className="w-1 h-1 rounded-full bg-muted-foreground/50" /> Bengaluru
+                        </CardDescription>
                       </div>
                     </div>
-                    <Badge variant="outline" className="shrink-0 self-start text-xs"><Calendar className="mr-1 h-3 w-3" /> Jun 2023 — Feb 2024</Badge>
+                    <Badge variant="secondary" className="shrink-0 font-medium px-3 py-1"><Calendar className="mr-2 h-3.5 w-3.5 text-muted-foreground" /> Jun 2023 — Feb 2024</Badge>
                   </div>
                 </CardHeader>
-                <CardContent className="p-5 md:p-8 pt-5">
-                  <ul className="space-y-3 text-foreground/80 text-sm leading-relaxed">
-                    <li className="flex items-start gap-2">
-                      <span className="text-secondary-foreground mt-1">•</span>
-                      <span>Facilitated effective communication between different departments, promoting collaboration.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-secondary-foreground mt-1">•</span>
-                      <span>Assisted in streamlining operational workflows, leading to enhanced productivity.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-secondary-foreground mt-1">•</span>
-                      <span>Engaged in data management and reporting tasks to support decision-making processes.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-secondary-foreground mt-1">•</span>
-                      <span>Contributed to the implementation of best practices in operations management and supported various projects, demonstrating a commitment to achieving organisational goals.</span>
-                    </li>
-                  </ul>
+                <CardContent className="p-6 md:p-8 pt-0">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="flex items-start gap-3 p-4 rounded-lg bg-muted/30 border border-border/40">
+                      <Layers className="h-5 w-5 text-secondary-foreground shrink-0" />
+                      <p className="text-sm text-foreground/80 leading-relaxed">Streamlined cross-departmental operational workflows, leading to measurably enhanced organizational productivity.</p>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 rounded-lg bg-muted/30 border border-border/40">
+                      <Database className="h-5 w-5 text-secondary-foreground shrink-0" />
+                      <p className="text-sm text-foreground/80 leading-relaxed">Managed data reporting and implemented best practices to support high-level decision-making processes.</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -302,38 +328,43 @@ export default function Portfolio() {
       {/* ═══════════════════════════════════
          INTERNSHIPS & EDUCATION
          ═══════════════════════════════════ */}
-      <section id="education" className="py-20 md:py-28 px-4 bg-muted/10 border-y border-border/40">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+      <section id="education" className="py-20 md:py-32 px-4 bg-muted/10 border-y border-border/40">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16">
 
           {/* Education */}
           <div>
             <SectionHeader subtitle="Academics" title="Education" />
-            <div className="space-y-6">
-              <Card className="hover:shadow-md transition-all duration-300">
+            <div className="space-y-5">
+              <Card className="border-border/50 shadow-sm hover:shadow-md transition-all duration-300 bg-background/60 backdrop-blur-sm">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-primary/10 mt-1">
+                    <div className="p-2.5 rounded-xl bg-primary/10 mt-1">
                       <GraduationCap className="h-5 w-5 text-primary" />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold">PGP Rise General Management</h3>
-                      <p className="text-sm text-foreground/75 mb-2">Masters&apos; Union · Gurgaon</p>
-                      <Badge variant="secondary" className="text-xs">Aug 2025 — Present</Badge>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-start mb-1">
+                        <h3 className="text-lg font-bold">PGP Rise General Management</h3>
+                        <Badge variant="secondary" className="text-[10px] ml-2 shrink-0">Aug 2025 — Present</Badge>
+                      </div>
+                      <p className="text-sm font-medium text-foreground/70">Masters&apos; Union · Gurgaon</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-md transition-all duration-300">
+              <Card className="border-border/50 shadow-sm hover:shadow-md transition-all duration-300 bg-background/60 backdrop-blur-sm">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-primary/10 mt-1">
+                    <div className="p-2.5 rounded-xl bg-primary/10 mt-1">
                       <GraduationCap className="h-5 w-5 text-primary" />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold">B.A. in Journalism, Psychology and English</h3>
-                      <p className="text-sm text-foreground/75 mb-2">Christ University · Bengaluru</p>
-                      <Badge variant="secondary" className="text-xs">Aug 2020 — May 2024</Badge>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-start mb-1">
+                        <h3 className="text-lg font-bold">B.A. Triple Major</h3>
+                        <Badge variant="secondary" className="text-[10px] ml-2 shrink-0">2020 — 2024</Badge>
+                      </div>
+                      <p className="text-sm font-medium text-foreground/70 mb-2">Christ University · Bengaluru</p>
+                      <p className="text-xs text-muted-foreground">Journalism, Psychology, and English Literature</p>
                     </div>
                   </div>
                 </CardContent>
@@ -344,32 +375,36 @@ export default function Portfolio() {
           {/* Internships */}
           <div>
             <SectionHeader subtitle="Early Experience" title="Internships" />
-            <div className="space-y-6">
-              <Card className="hover:shadow-md transition-all duration-300">
+            <div className="space-y-5">
+              <Card className="border-border/50 shadow-sm hover:shadow-md transition-all duration-300 bg-background/60 backdrop-blur-sm">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-accent/10 mt-1">
+                    <div className="p-2.5 rounded-xl bg-accent/10 mt-1">
                       <PenTool className="h-5 w-5 text-accent-foreground" />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold">Content Writer</h3>
-                      <p className="text-sm text-foreground/75 mb-2">Rajasthan Patrika · Udaipur</p>
-                      <Badge variant="outline" className="text-xs">Jun 2022 — Jul 2022</Badge>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-start mb-1">
+                        <h3 className="text-lg font-bold">Content Writer</h3>
+                        <Badge variant="outline" className="text-[10px] ml-2 shrink-0">Jun — Jul 2022</Badge>
+                      </div>
+                      <p className="text-sm font-medium text-foreground/70">Rajasthan Patrika · Udaipur</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-md transition-all duration-300">
+              <Card className="border-border/50 shadow-sm hover:shadow-md transition-all duration-300 bg-background/60 backdrop-blur-sm">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-accent/10 mt-1">
+                    <div className="p-2.5 rounded-xl bg-accent/10 mt-1">
                       <PenTool className="h-5 w-5 text-accent-foreground" />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold">Content Writer</h3>
-                      <p className="text-sm text-foreground/75 mb-2">Earthy Objects · Remote</p>
-                      <Badge variant="outline" className="text-xs">Jun 2021 — Aug 2021</Badge>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-start mb-1">
+                        <h3 className="text-lg font-bold">Content Writer</h3>
+                        <Badge variant="outline" className="text-[10px] ml-2 shrink-0">Jun — Aug 2021</Badge>
+                      </div>
+                      <p className="text-sm font-medium text-foreground/70">Earthy Objects · Remote</p>
                     </div>
                   </div>
                 </CardContent>
@@ -383,31 +418,31 @@ export default function Portfolio() {
       {/* ═══════════════════════════════════
          PORTFOLIO / PROJECTS
          ═══════════════════════════════════ */}
-      <section id="portfolio" className="py-20 md:py-28 px-4">
+      <section id="portfolio" className="py-20 md:py-32 px-4">
         <div className="max-w-5xl mx-auto">
           <SectionHeader subtitle="Work" title="Featured Projects" />
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <Card className="group hover:shadow-lg transition-all duration-300 flex flex-col h-full bg-gradient-to-br from-background to-muted/20 border-primary/20">
-                <CardHeader className="p-5 md:p-8 pb-0">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <Scale className="h-5 w-5 text-primary" />
+              <Card className="group hover:shadow-xl transition-all duration-500 flex flex-col h-full bg-gradient-to-br from-background to-muted/30 border-primary/20 hover:border-primary/50 overflow-hidden">
+                <CardHeader className="p-6 md:p-8 pb-2">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                      <Scale className="h-6 w-6 text-primary group-hover:text-primary-foreground" />
                     </div>
                     <div>
-                      <CardTitle className="text-lg">Coop AI</CardTitle>
-                      <CardDescription className="text-sm">Contract Lifecycle Copilot</CardDescription>
+                      <CardTitle className="text-xl font-bold">Coop AI</CardTitle>
+                      <CardDescription className="text-sm font-medium mt-1">Contract Lifecycle Copilot</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="p-5 md:p-8 pt-4 flex-1 flex flex-col">
-                  <p className="text-sm text-foreground/75 mb-4 leading-relaxed flex-1">
-                    An intelligent CLM platform designed to accelerate legal negotiations. Features automated risk detection against custom legal playbooks and an AI negotiation copilot for live redlining.
+                <CardContent className="p-6 md:p-8 pt-4 flex-1 flex flex-col">
+                  <p className="text-sm text-foreground/80 mb-8 leading-relaxed flex-1">
+                    An intelligent CLM platform designed to accelerate legal negotiations. Features automated risk detection against custom legal playbooks and an AI negotiation copilot for live document redlining.
                   </p>
-                  <div className="flex flex-wrap gap-1.5 mt-auto">
+                  <div className="flex flex-wrap gap-2 mt-auto">
                     {["0-to-1 Build", "Generative AI", "PRD Architecture", "GTM Strategy"].map((t) => (
-                      <Badge key={t} variant="outline" className="text-[11px] font-normal">{t}</Badge>
+                      <Badge key={t} variant="secondary" className="text-xs font-medium px-3 py-1 bg-background/80">{t}</Badge>
                     ))}
                   </div>
                 </CardContent>
@@ -415,25 +450,25 @@ export default function Portfolio() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-              <Card className="group hover:shadow-lg transition-all duration-300 flex flex-col h-full">
-                <CardHeader className="p-5 md:p-8 pb-0">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <Layers className="h-5 w-5 text-primary" />
+              <Card className="group hover:shadow-xl transition-all duration-500 flex flex-col h-full bg-gradient-to-br from-background to-muted/30 border-accent/20 hover:border-accent/50 overflow-hidden">
+                <CardHeader className="p-6 md:p-8 pb-2">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
+                      <Layers className="h-6 w-6 text-accent-foreground group-hover:text-accent-foreground" />
                     </div>
                     <div>
-                      <CardTitle className="text-lg">HeliumLabs</CardTitle>
-                      <CardDescription className="text-sm">AI Annotation Platform</CardDescription>
+                      <CardTitle className="text-xl font-bold">HeliumLabs</CardTitle>
+                      <CardDescription className="text-sm font-medium mt-1">AI Annotation Platform</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="p-5 md:p-8 pt-4 flex-1 flex flex-col">
-                  <p className="text-sm text-foreground/75 mb-4 leading-relaxed flex-1">
-                    Unified data-preparation infrastructure for AI builders. Designed the product roadmap, PLG model, and investor narrative from scratch to support multi-modal data processing.
+                <CardContent className="p-6 md:p-8 pt-4 flex-1 flex flex-col">
+                  <p className="text-sm text-foreground/80 mb-8 leading-relaxed flex-1">
+                    Unified data-preparation infrastructure for AI builders. Designed the product roadmap, PLG model, and investor narrative from scratch to support complex multi-modal data processing workflows.
                   </p>
-                  <div className="flex flex-wrap gap-1.5 mt-auto">
+                  <div className="flex flex-wrap gap-2 mt-auto">
                     {["Product Roadmap", "PLG", "Multi-modal AI", "Pre-Seed"].map((t) => (
-                      <Badge key={t} variant="outline" className="text-[11px] font-normal">{t}</Badge>
+                      <Badge key={t} variant="secondary" className="text-xs font-medium px-3 py-1 bg-background/80">{t}</Badge>
                     ))}
                   </div>
                 </CardContent>
@@ -446,10 +481,10 @@ export default function Portfolio() {
       {/* ═══════════════════════════════════
          SKILLS & EXPERTISE
          ═══════════════════════════════════ */}
-      <section id="expertise" className="py-20 md:py-28 px-4 bg-muted/10 border-y border-border/40">
-        <div className="max-w-5xl mx-auto text-center">
-          <SectionHeader subtitle="Expertise" title="Core Skills" />
-          <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+      <section id="expertise" className="py-20 md:py-28 px-4 bg-primary/5 border-y border-border/40">
+        <div className="max-w-4xl mx-auto text-center">
+          <SectionHeader subtitle="Expertise" title="Core Capabilities" />
+          <div className="flex flex-wrap justify-center gap-3">
             {[
               "Token Economics",
               "Market Research",
@@ -460,9 +495,11 @@ export default function Portfolio() {
               "Process Optimization",
               "GTM Strategy"
             ].map((skill) => (
-              <Badge key={skill} variant="secondary" className="text-sm py-2 px-4 font-medium">
-                {skill}
-              </Badge>
+              <motion.div key={skill} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Badge variant="outline" className="text-sm py-2.5 px-5 font-medium bg-background/50 backdrop-blur-sm border-primary/20 hover:border-primary/60 hover:bg-primary/5 transition-colors cursor-default">
+                  {skill}
+                </Badge>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -471,45 +508,49 @@ export default function Portfolio() {
       {/* ═══════════════════════════════════
          CONTACT
          ═══════════════════════════════════ */}
-      <section id="contact" className="py-20 md:py-28 px-4">
+      <section id="contact" className="py-20 md:py-32 px-4">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-14 text-center">
+          <div className="mb-16 text-center">
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Contact</p>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Let&apos;s Build Something Together</h2>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">Open to product roles, AI collaborations, and interesting conversations.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10">
-            <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8 p-6 md:p-0">
               {[
-                { icon: <Mail className="h-4 w-4" />, label: "Email", value: "vedankbhatnagar165@gmail.com", href: "mailto:vedankbhatnagar165@gmail.com" },
-                { icon: <Phone className="h-4 w-4" />, label: "Phone", value: "+91 7426019793", href: "tel:+917426019793" },
-                { icon: <Linkedin className="h-4 w-4" />, label: "LinkedIn", value: "linkedin.com/in/vedankbhr", href: "https://www.linkedin.com/in/vedankbhr" },
-                { icon: <MapPin className="h-4 w-4" />, label: "Location", value: "Gurgaon, India" },
+                { icon: <Mail className="h-5 w-5" />, label: "Email", value: "vedankbhatnagar165@gmail.com", href: "mailto:vedankbhatnagar165@gmail.com" },
+                { icon: <Phone className="h-5 w-5" />, label: "Phone", value: "+91 7426019793", href: "tel:+917426019793" },
+                { icon: <Linkedin className="h-5 w-5" />, label: "LinkedIn", value: "linkedin.com/in/vedankbhr", href: "https://www.linkedin.com/in/vedankbhr" },
+                { icon: <MapPin className="h-5 w-5" />, label: "Location", value: "Gurgaon, India" },
               ].map((item) => (
-                <div key={item.label} className="flex items-center gap-4">
-                  <div className="p-2.5 rounded-lg bg-primary/10 text-primary shrink-0">{item.icon}</div>
+                <div key={item.label} className="flex items-center gap-5 group">
+                  <div className="p-3.5 rounded-xl bg-primary/10 text-primary shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                    {item.icon}
+                  </div>
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground">{item.label}</p>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-primary transition-colors">
+                      <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-base font-semibold text-foreground hover:text-primary transition-colors">
                         {item.value}
                       </a>
                     ) : (
-                      <p className="text-sm font-medium">{item.value}</p>
+                      <p className="text-base font-semibold text-foreground">{item.value}</p>
                     )}
                   </div>
                 </div>
               ))}
             </div>
 
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-5 md:p-8">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <Input placeholder="Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required />
-                  <Input type="email" placeholder="Email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required />
-                  <Textarea placeholder="Tell me about your project or opportunity…" rows={4} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required />
-                  <Button type="submit" className="w-full gap-2"><Send className="h-4 w-4" /> Send Message</Button>
+            <Card className="border border-border/50 shadow-xl shadow-primary/5 bg-background/50 backdrop-blur-sm">
+              <CardContent className="p-6 md:p-10">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <Input className="h-12 bg-muted/30 border-border/50 focus-visible:ring-primary/50" placeholder="Your Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required />
+                  <Input className="h-12 bg-muted/30 border-border/50 focus-visible:ring-primary/50" type="email" placeholder="Your Email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required />
+                  <Textarea className="min-h-[120px] bg-muted/30 border-border/50 focus-visible:ring-primary/50 resize-y" placeholder="Tell me about your project or opportunity…" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required />
+                  <Button type="submit" size="lg" className="w-full h-12 gap-2 text-base font-medium shadow-md hover:shadow-primary/20 transition-all">
+                    <Send className="h-4 w-4" /> Send Message
+                  </Button>
                 </form>
               </CardContent>
             </Card>
