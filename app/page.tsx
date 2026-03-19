@@ -404,18 +404,19 @@ export default function Portfolio() {
           EDUCATION & INTERNSHIPS (Detailed Content)
          ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 border-t border-border/40 bg-muted/10">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="max-w-6xl mx-auto space-y-16">
 
-          {/* Education */}
+          {/* Education Section */}
           <div>
             <FadeIn>
               <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
                 <GraduationCap className="w-6 h-6 text-blue-600" /> Education
               </h2>
-              <div className="space-y-6">
+
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8">
 
                 {/* Masters' Union */}
-                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300">
+                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                     <div>
                       <h3 className="text-lg font-bold group-hover:text-blue-600 transition-colors">PGP Rise General Management</h3>
@@ -425,7 +426,7 @@ export default function Portfolio() {
                       Aug 2025 — Present
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                     Focusing on advanced business strategy, technology entrepreneurship, and product management. Gaining hands-on experience in scaling tech products, optimizing unit economics, and executing Go-To-Market strategies.
                   </p>
                   <p className="text-sm font-medium text-foreground/80 leading-relaxed border-l-2 border-blue-500/50 pl-3">
@@ -441,7 +442,7 @@ export default function Portfolio() {
                 </div>
 
                 {/* Christ University */}
-                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300">
+                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                     <div>
                       <h3 className="text-lg font-bold group-hover:text-blue-600 transition-colors">B.A. Triple Major</h3>
@@ -451,7 +452,7 @@ export default function Portfolio() {
                       2020 — 2024
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                     An interdisciplinary foundation spanning Journalism, Psychology, and English Literature. This diverse curriculum uniquely shapes my product sense by merging behavioral analysis with effective storytelling.
                   </p>
                   <p className="text-sm font-medium text-foreground/80 leading-relaxed border-l-2 border-blue-500/50 pl-3">
@@ -470,16 +471,17 @@ export default function Portfolio() {
             </FadeIn>
           </div>
 
-          {/* Internships */}
+          {/* Internships Section */}
           <div>
             <FadeIn delay={0.1}>
               <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
                 <Sparkles className="w-6 h-6 text-violet-600" /> Internships
               </h2>
-              <div className="space-y-6">
+
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8">
 
                 {/* Rajasthan Patrika */}
-                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-violet-500/30 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1 transition-all duration-300">
+                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-violet-500/30 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                     <div>
                       <h3 className="text-lg font-bold group-hover:text-violet-600 transition-colors">Content Writer</h3>
@@ -489,13 +491,13 @@ export default function Portfolio() {
                       Jun — Jul 2022
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                     Developed editorial content and honed skills in rapid research, narrative framing, and meeting tight publishing deadlines in a high-volume media environment.
                   </p>
                 </div>
 
                 {/* Earthy Objects */}
-                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-violet-500/30 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1 transition-all duration-300">
+                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-violet-500/30 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                     <div>
                       <h3 className="text-lg font-bold group-hover:text-violet-600 transition-colors">Content Writer</h3>
@@ -505,7 +507,7 @@ export default function Portfolio() {
                       Jun — Aug 2021
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                     Crafted targeted digital copy and product narratives, learning the fundamentals of brand voice, digital marketing, and audience engagement.
                   </p>
                 </div>
