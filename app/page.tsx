@@ -139,6 +139,7 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
+      <ThemeToggle />
 
       {/* ═══════════════════════════════════════════
           NAVBAR
@@ -400,48 +401,115 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          EDUCATION & INTERNSHIPS (Minimal List)
+          EDUCATION & INTERNSHIPS (Detailed Content)
          ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 border-t border-border/40 bg-muted/10">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-16">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16">
 
+          {/* Education */}
           <div>
             <FadeIn>
               <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
                 <GraduationCap className="w-6 h-6 text-blue-600" /> Education
               </h2>
               <div className="space-y-6">
-                <div className="group p-5 bg-background border border-border/50 rounded-2xl hover:border-blue-500/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  <p className="text-sm font-bold group-hover:text-blue-600 transition-colors">PGP Rise General Management</p>
-                  <p className="text-sm text-muted-foreground mt-1">Masters' Union &middot; Gurgaon</p>
-                  <p className="text-xs font-medium text-blue-500 mt-2 bg-blue-500/10 inline-block px-2 py-1 rounded">Aug 2025 — Present</p>
+
+                {/* Masters' Union */}
+                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                    <div>
+                      <h3 className="text-lg font-bold group-hover:text-blue-600 transition-colors">PGP Rise General Management</h3>
+                      <p className="text-sm font-medium text-muted-foreground mt-1">Masters' Union &middot; Gurgaon</p>
+                    </div>
+                    <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full self-start md:self-auto shrink-0">
+                      Aug 2025 — Present
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    Focusing on advanced business strategy, technology entrepreneurship, and product management. Gaining hands-on experience in scaling tech products, optimizing unit economics, and executing Go-To-Market strategies.
+                  </p>
+                  <p className="text-sm font-medium text-foreground/80 leading-relaxed border-l-2 border-blue-500/50 pl-3">
+                    <span className="text-blue-600 dark:text-blue-400">Career Utility:</span> This intensive business foundation directly empowers me to bridge the gap between complex AI engineering and commercial viability as a product leader.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-5">
+                    {["Business Strategy", "Unit Economics", "GTM Execution", "Product Leadership"].map(skill => (
+                      <span key={skill} className="px-2.5 py-1 bg-muted rounded-md text-xs font-medium text-foreground/70 group-hover:bg-blue-500/5 transition-colors">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="group p-5 bg-background border border-border/50 rounded-2xl hover:border-blue-500/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  <p className="text-sm font-bold group-hover:text-blue-600 transition-colors">B.A. Triple Major</p>
-                  <p className="text-sm text-muted-foreground mt-1">Christ University &middot; Bengaluru</p>
-                  <p className="text-xs text-foreground/60 mt-2 bg-muted inline-block px-2 py-1 rounded border border-border/50 mr-2">Journalism, Psychology, English</p>
-                  <p className="text-xs font-medium text-muted-foreground mt-2 inline-block">2020 — 2024</p>
+
+                {/* Christ University */}
+                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                    <div>
+                      <h3 className="text-lg font-bold group-hover:text-blue-600 transition-colors">B.A. Triple Major</h3>
+                      <p className="text-sm font-medium text-muted-foreground mt-1">Christ University &middot; Bengaluru</p>
+                    </div>
+                    <span className="text-xs font-semibold text-muted-foreground bg-muted border border-border/50 px-3 py-1 rounded-full self-start md:self-auto shrink-0">
+                      2020 — 2024
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    An interdisciplinary foundation spanning Journalism, Psychology, and English Literature. This diverse curriculum uniquely shapes my product sense by merging behavioral analysis with effective storytelling.
+                  </p>
+                  <p className="text-sm font-medium text-foreground/80 leading-relaxed border-l-2 border-blue-500/50 pl-3">
+                    <span className="text-blue-600 dark:text-blue-400">Career Utility:</span> Psychology drives my approach to user research and behavioral design; Journalism hones my ability to craft compelling GTM narratives; and English Literature ensures clear, persuasive stakeholder communication.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-5">
+                    {["User Research", "Behavioral Design", "Copywriting", "Stakeholder Comms"].map(skill => (
+                      <span key={skill} className="px-2.5 py-1 bg-muted rounded-md text-xs font-medium text-foreground/70 group-hover:bg-blue-500/5 transition-colors">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+
               </div>
             </FadeIn>
           </div>
 
+          {/* Internships */}
           <div>
             <FadeIn delay={0.1}>
               <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
                 <Sparkles className="w-6 h-6 text-violet-600" /> Internships
               </h2>
               <div className="space-y-6">
-                <div className="group p-5 bg-background border border-border/50 rounded-2xl hover:border-violet-500/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  <p className="text-sm font-bold group-hover:text-violet-600 transition-colors">Content Writer</p>
-                  <p className="text-sm text-muted-foreground mt-1">Rajasthan Patrika &middot; Udaipur</p>
-                  <p className="text-xs font-medium text-violet-500 mt-2 bg-violet-500/10 inline-block px-2 py-1 rounded">Jun 2022 — Jul 2022</p>
+
+                {/* Rajasthan Patrika */}
+                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-violet-500/30 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                    <div>
+                      <h3 className="text-lg font-bold group-hover:text-violet-600 transition-colors">Content Writer</h3>
+                      <p className="text-sm font-medium text-muted-foreground mt-1">Rajasthan Patrika &middot; Udaipur</p>
+                    </div>
+                    <span className="text-xs font-semibold text-violet-600 dark:text-violet-400 bg-violet-500/10 px-3 py-1 rounded-full self-start md:self-auto shrink-0">
+                      Jun — Jul 2022
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Developed editorial content and honed skills in rapid research, narrative framing, and meeting tight publishing deadlines in a high-volume media environment.
+                  </p>
                 </div>
-                <div className="group p-5 bg-background border border-border/50 rounded-2xl hover:border-violet-500/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  <p className="text-sm font-bold group-hover:text-violet-600 transition-colors">Content Writer</p>
-                  <p className="text-sm text-muted-foreground mt-1">Earthy Objects &middot; Remote</p>
-                  <p className="text-xs font-medium text-violet-500 mt-2 bg-violet-500/10 inline-block px-2 py-1 rounded">Jun 2021 — Aug 2021</p>
+
+                {/* Earthy Objects */}
+                <div className="group p-6 md:p-8 bg-background border border-border/50 rounded-3xl hover:border-violet-500/30 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                    <div>
+                      <h3 className="text-lg font-bold group-hover:text-violet-600 transition-colors">Content Writer</h3>
+                      <p className="text-sm font-medium text-muted-foreground mt-1">Earthy Objects &middot; Remote</p>
+                    </div>
+                    <span className="text-xs font-semibold text-violet-600 dark:text-violet-400 bg-violet-500/10 px-3 py-1 rounded-full self-start md:self-auto shrink-0">
+                      Jun — Aug 2021
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Crafted targeted digital copy and product narratives, learning the fundamentals of brand voice, digital marketing, and audience engagement.
+                  </p>
                 </div>
+
               </div>
             </FadeIn>
           </div>
