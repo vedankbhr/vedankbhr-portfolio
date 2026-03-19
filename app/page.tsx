@@ -2,10 +2,8 @@
 
 import type React from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Mail,
@@ -19,19 +17,14 @@ import {
   GraduationCap,
   Sparkles,
   Bot,
-  MessageSquare
+  MessageSquare,
+  CalendarDays
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
 /* ─────────────────────────────────────────────
    DATA
    ───────────────────────────────────────────── */
-const TOOLS = [
-  "Gemini", "ChatGPT", "Anthropic", "HuggingFace", "Google AI Studio",
-  "n8n", "LangChain", "Vercel", "Next.js", "Supabase",
-  "Lovable", "Figma", "Notion", "Linear", "PostHog"
-]
-
 const EXPERIENCE = [
   {
     role: "Founder's Office — AI & Strategy",
@@ -91,37 +84,27 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 function AnimatedCount({ value, suffix = "", className = "" }: { value: number; suffix?: string; className?: string }) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
-  const hasRun = useRef(false)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
 
   useEffect(() => {
-    if (typeof window === "undefined") return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasRun.current) {
-          hasRun.current = true
-          let start = 0
-          const duration = 1400
-          const step = Math.ceil(value / (duration / 16))
-          const timer = setInterval(() => {
-            start += step
-            if (start >= value) {
-              setCount(value)
-              clearInterval(timer)
-            } else {
-              setCount(start)
-            }
-          }, 16)
+    if (isInView) {
+      let start = 0
+      const duration = 1400
+      const step = Math.max(1, Math.ceil(value / (duration / 16)))
+
+      const timer = setInterval(() => {
+        start += step
+        if (start >= value) {
+          setCount(value)
+          clearInterval(timer)
+        } else {
+          setCount(start)
         }
-      },
-      { threshold: 0.5 }
-    )
+      }, 16)
 
-    setTimeout(() => {
-      if (ref.current) observer.observe(ref.current)
-    }, 0)
-
-    return () => observer.disconnect()
-  }, [value])
+      return () => clearInterval(timer)
+    }
+  }, [isInView, value])
 
   return (
     <span ref={ref} className={className}>
@@ -131,18 +114,6 @@ function AnimatedCount({ value, suffix = "", className = "" }: { value: number; 
 }
 
 export default function Portfolio() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const subject = encodeURIComponent("Portfolio Inquiry")
-    const body = encodeURIComponent(
-      `Hi Vedank,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )
-    window.open(`mailto:vedankbhatnagar165@gmail.com?subject=${subject}&body=${body}`, "_blank")
-    setFormData({ name: "", email: "", message: "" })
-  }
-
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
       <ThemeToggle />
@@ -220,34 +191,9 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          TOOLS MARQUEE
-         ═══════════════════════════════════════════ */}
-      <section className="py-8 border-y border-border/40 bg-muted/10 overflow-hidden relative flex items-center">
-        {/* Gradient Fade Masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-
-        <motion.div
-          className="flex whitespace-nowrap gap-6 items-center w-max"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
-        >
-          {[...TOOLS, ...TOOLS].map((tool, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-2.5 px-4 py-2.5 bg-background border border-border/50 rounded-full shadow-sm text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-blue-500/30 hover:shadow-md transition-all cursor-default"
-            >
-              <span className="w-2 h-2 rounded-full bg-blue-500/50" />
-              {tool}
-            </div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
           BENTO GRID (Stats & Skills)
          ═══════════════════════════════════════════ */}
-      <section className="py-16 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[200px]">
 
@@ -372,7 +318,7 @@ export default function Portfolio() {
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center gap-4">
                   <Terminal className="w-8 h-8 text-violet-600" /> Featured Work
                 </h2>
-                <p className="text-muted-foreground max-w-lg">A selection of AI agents and platforms I've built and engineered.</p>
+                <p className="text-muted-foreground max-w-lg">A selection of AI agents and platforms I&apos;ve built and engineered.</p>
               </div>
             </div>
           </FadeIn>
@@ -451,7 +397,7 @@ export default function Portfolio() {
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                     <div>
                       <h3 className="text-lg font-bold group-hover:text-blue-600 transition-colors">PGP Rise General Management</h3>
-                      <p className="text-sm font-medium text-muted-foreground mt-1">Masters' Union &middot; Gurgaon</p>
+                      <p className="text-sm font-medium text-muted-foreground mt-1">Masters&apos; Union &middot; Gurgaon</p>
                     </div>
                     <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full self-start md:self-auto shrink-0">
                       Aug 2025 — Present
@@ -615,7 +561,7 @@ export default function Portfolio() {
           FOOTER
          ═══════════════════════════════════════════ */}
       <footer className="py-8 text-center border-t border-border/40 text-sm text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar. Built with Next.js.</p>
+        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar</p>
       </footer>
     </div>
   )
