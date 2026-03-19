@@ -21,7 +21,9 @@ import {
   Bot,
   MessageSquare,
   CalendarDays,
-  Heart
+  Heart,
+  Flame,
+  Box
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
@@ -29,18 +31,23 @@ import { useState, useEffect, useRef } from "react"
    DATA
    ───────────────────────────────────────────── */
 
-// Tools configured to fetch official SVG logos from SimpleIcons CDN
+// Tools configured to fetch official SVG logos from SimpleIcons CDN or use Lucide fallbacks
 const TOOLS = [
   { name: "Gemini", icon: "googlegemini", type: "simpleicon" },
-  { name: "ChatGPT", icon: "openai", type: "simpleicon", invert: true },
+  { name: "OpenAI", icon: "openai", type: "simpleicon", invert: true },
   { name: "Anthropic", icon: "anthropic", type: "simpleicon", invert: true },
   { name: "HuggingFace", icon: "huggingface", type: "simpleicon" },
   { name: "Google AI Studio", icon: "google", type: "simpleicon" },
   { name: "n8n", icon: "n8n", type: "simpleicon" },
   { name: "LangChain", icon: "langchain", type: "simpleicon", invert: true },
+  { name: "VS Code", icon: "visualstudiocode", type: "simpleicon" },
   { name: "Vercel", icon: "vercel", type: "simpleicon", invert: true },
+  { name: "Vercel v0", icon: <Sparkles className="w-4 h-4 text-foreground" />, type: "lucide" },
   { name: "Next.js", icon: "nextdotjs", type: "simpleicon", invert: true },
   { name: "Supabase", icon: "supabase", type: "simpleicon" },
+  { name: "Firecrawl", icon: <Flame className="w-4 h-4 text-orange-500" />, type: "lucide" },
+  { name: "Ollama", icon: "ollama", type: "simpleicon", invert: true },
+  { name: "LM Studio", icon: <Box className="w-4 h-4 text-blue-500" />, type: "lucide" },
   { name: "Lovable", icon: <Heart className="w-4 h-4 text-pink-500 fill-pink-500/20" />, type: "lucide" },
   { name: "Figma", icon: "figma", type: "simpleicon" },
   { name: "Notion", icon: "notion", type: "simpleicon", invert: true },
