@@ -4,6 +4,8 @@ import type React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Mail,
@@ -17,14 +19,19 @@ import {
   GraduationCap,
   Sparkles,
   Bot,
-  MessageSquare,
-  CalendarDays
+  MessageSquare
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
 /* ─────────────────────────────────────────────
    DATA
    ───────────────────────────────────────────── */
+const TOOLS = [
+  "Gemini", "ChatGPT", "Anthropic", "HuggingFace", "Google AI Studio",
+  "n8n", "LangChain", "Vercel", "Next.js", "Supabase",
+  "Lovable", "Figma", "Notion", "Linear", "PostHog"
+]
+
 const EXPERIENCE = [
   {
     role: "Founder's Office — AI & Strategy",
@@ -124,6 +131,18 @@ function AnimatedCount({ value, suffix = "", className = "" }: { value: number; 
 }
 
 export default function Portfolio() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const subject = encodeURIComponent("Portfolio Inquiry")
+    const body = encodeURIComponent(
+      `Hi Vedank,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )
+    window.open(`mailto:vedankbhatnagar165@gmail.com?subject=${subject}&body=${body}`, "_blank")
+    setFormData({ name: "", email: "", message: "" })
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
       <ThemeToggle />
@@ -201,9 +220,34 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════
+          TOOLS MARQUEE
+         ═══════════════════════════════════════════ */}
+      <section className="py-8 border-y border-border/40 bg-muted/10 overflow-hidden relative flex items-center">
+        {/* Gradient Fade Masks */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        <motion.div
+          className="flex whitespace-nowrap gap-6 items-center w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
+        >
+          {[...TOOLS, ...TOOLS].map((tool, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-2.5 px-4 py-2.5 bg-background border border-border/50 rounded-full shadow-sm text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-blue-500/30 hover:shadow-md transition-all cursor-default"
+            >
+              <span className="w-2 h-2 rounded-full bg-blue-500/50" />
+              {tool}
+            </div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           BENTO GRID (Stats & Skills)
          ═══════════════════════════════════════════ */}
-      <section className="py-12 px-6">
+      <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[200px]">
 
