@@ -615,7 +615,7 @@ export default function Portfolio() {
           FOOTER
          ═══════════════════════════════════════════ */}
       <footer className="py-8 text-center border-t border-border/40 text-sm text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar</p>
+        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar. Built with Next.js.</p>
       </footer>
     </div>
   )
