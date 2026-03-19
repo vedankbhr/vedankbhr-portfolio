@@ -4,8 +4,6 @@ import type React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Mail,
@@ -19,7 +17,8 @@ import {
   GraduationCap,
   Sparkles,
   Bot,
-  MessageSquare
+  MessageSquare,
+  CalendarDays
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
@@ -125,18 +124,6 @@ function AnimatedCount({ value, suffix = "", className = "" }: { value: number; 
 }
 
 export default function Portfolio() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const subject = encodeURIComponent("Portfolio Inquiry")
-    const body = encodeURIComponent(
-      `Hi Vedank,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )
-    window.open(`mailto:vedankbhatnagar165@gmail.com?subject=${subject}&body=${body}`, "_blank")
-    setFormData({ name: "", email: "", message: "" })
-  }
-
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
       <ThemeToggle />
@@ -401,7 +388,7 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          EDUCATION & INTERNSHIPS (Detailed Content)
+          EDUCATION & INTERNSHIPS (Grid Layout Reordered)
          ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 border-t border-border/40 bg-muted/10">
         <div className="max-w-6xl mx-auto space-y-16">
@@ -520,57 +507,61 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          CONTACT SECTION
+          CONTACT & CALENDLY SECTION
          ═══════════════════════════════════════════ */}
       <section id="contact" className="py-24 px-6 border-t border-border/40">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <div className="bg-muted/40 border border-border/50 rounded-3xl p-8 md:p-12 text-center hover:border-blue-500/20 transition-colors duration-500">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Ready to build?</h2>
-              <p className="text-muted-foreground max-w-lg mx-auto mb-8">
-                I am currently open to new product roles, AI collaborations, and advising on zero-to-one builds.
-              </p>
+            <div className="bg-muted/40 border border-border/50 rounded-3xl p-8 md:p-12 hover:border-blue-500/20 transition-colors duration-500">
 
-              <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-                <a href="mailto:vedankbhatnagar165@gmail.com" className="flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background font-medium rounded-full hover:bg-foreground/90 hover:scale-105 active:scale-95 transition-all shadow-md">
-                  <Mail className="w-4 h-4" /> vedankbhatnagar165@gmail.com
-                </a>
-                <a href="https://linkedin.com/in/vedankbhr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-6 py-3 bg-background border border-border/50 font-medium rounded-full hover:bg-muted hover:border-blue-500/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
-                  <Linkedin className="w-4 h-4 text-blue-600" /> Connect on LinkedIn
-                </a>
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                {/* Text and Social Links */}
+                <div className="text-center lg:text-left">
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Ready to build?</h2>
+                  <p className="text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed">
+                    I am currently open to new product roles, AI collaborations, and advising on zero-to-one builds. Grab a time on my calendar or connect directly.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                    <a href="mailto:vedankbhatnagar165@gmail.com" className="flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background font-medium rounded-full hover:bg-foreground/90 hover:scale-105 active:scale-95 transition-all shadow-md">
+                      <Mail className="w-4 h-4" /> Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/vedankbhr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-6 py-3 bg-background border border-border/50 font-medium rounded-full hover:bg-muted hover:border-blue-500/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
+                      <Linkedin className="w-4 h-4 text-blue-600" /> Connect on LinkedIn
+                    </a>
+                  </div>
+                </div>
+
+                {/* Calendly Inline Embed */}
+                <div className="w-full bg-background rounded-2xl overflow-hidden border border-border/50 shadow-sm h-[650px] relative group">
+                  {/* Decorative Window Header */}
+                  <div className="h-10 bg-muted/50 border-b border-border/50 flex items-center px-4 gap-2 shrink-0 absolute top-0 w-full z-10">
+                    <div className="w-3 h-3 rounded-full bg-red-400/80" />
+                    <div className="w-3 h-3 rounded-full bg-amber-400/80" />
+                    <div className="w-3 h-3 rounded-full bg-green-400/80" />
+                    <div className="flex-1 text-center flex justify-center items-center pr-8">
+                      <span className="text-[10px] text-muted-foreground font-medium flex items-center gap-1.5">
+                        <CalendarDays className="w-3 h-3" /> Schedule a Call
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* The Iframe */}
+                  <div className="w-full h-full pt-10">
+                    <iframe
+                      src="https://calendly.com/vedankbhr/1-1-discovery-call?hide_gdpr_banner=1"
+                      width="100%"
+                      height="100%"
+                      frameBorder="0"
+                      title="Schedule a discovery call with Vedank"
+                      className="bg-background"
+                    />
+                  </div>
+                </div>
+
               </div>
 
-              {/* Minimal Form */}
-              <form onSubmit={handleSubmit} className="max-w-md mx-auto text-left space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <Input
-                    placeholder="Name"
-                    value={formData.name}
-                    onChange={e => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="bg-background border-border/50 h-12 rounded-xl focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:border-blue-500 transition-all"
-                  />
-                  <Input
-                    type="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="bg-background border-border/50 h-12 rounded-xl focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:border-blue-500 transition-all"
-                  />
-                </div>
-                <Textarea
-                  placeholder="How can I help you?"
-                  rows={4}
-                  value={formData.message}
-                  onChange={e => setFormData({ ...formData, message: e.target.value })}
-                  required
-                  className="bg-background border-border/50 rounded-xl resize-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:border-blue-500 transition-all"
-                />
-                <Button type="submit" className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 transition-all">
-                  Send Message
-                </Button>
-              </form>
             </div>
           </FadeIn>
         </div>
@@ -580,7 +571,7 @@ export default function Portfolio() {
           FOOTER
          ═══════════════════════════════════════════ */}
       <footer className="py-8 text-center border-t border-border/40 text-sm text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar. Built with Next.js.</p>
+        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar</p>
       </footer>
     </div>
   )
