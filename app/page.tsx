@@ -2,7 +2,7 @@
 
 import type React from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
@@ -84,37 +84,27 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 function AnimatedCount({ value, suffix = "", className = "" }: { value: number; suffix?: string; className?: string }) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
-  const hasRun = useRef(false)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
 
   useEffect(() => {
-    if (typeof window === "undefined") return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasRun.current) {
-          hasRun.current = true
-          let start = 0
-          const duration = 1400
-          const step = Math.ceil(value / (duration / 16))
-          const timer = setInterval(() => {
-            start += step
-            if (start >= value) {
-              setCount(value)
-              clearInterval(timer)
-            } else {
-              setCount(start)
-            }
-          }, 16)
+    if (isInView) {
+      let start = 0
+      const duration = 1400
+      const step = Math.max(1, Math.ceil(value / (duration / 16)))
+
+      const timer = setInterval(() => {
+        start += step
+        if (start >= value) {
+          setCount(value)
+          clearInterval(timer)
+        } else {
+          setCount(start)
         }
-      },
-      { threshold: 0.5 }
-    )
+      }, 16)
 
-    setTimeout(() => {
-      if (ref.current) observer.observe(ref.current)
-    }, 0)
-
-    return () => observer.disconnect()
-  }, [value])
+      return () => clearInterval(timer)
+    }
+  }, [isInView, value])
 
   return (
     <span ref={ref} className={className}>
@@ -328,7 +318,7 @@ export default function Portfolio() {
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center gap-4">
                   <Terminal className="w-8 h-8 text-violet-600" /> Featured Work
                 </h2>
-                <p className="text-muted-foreground max-w-lg">A selection of AI agents and platforms I've built and engineered.</p>
+                <p className="text-muted-foreground max-w-lg">A selection of AI agents and platforms I&apos;ve built and engineered.</p>
               </div>
             </div>
           </FadeIn>
@@ -407,7 +397,7 @@ export default function Portfolio() {
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                     <div>
                       <h3 className="text-lg font-bold group-hover:text-blue-600 transition-colors">PGP Rise General Management</h3>
-                      <p className="text-sm font-medium text-muted-foreground mt-1">Masters' Union &middot; Gurgaon</p>
+                      <p className="text-sm font-medium text-muted-foreground mt-1">Masters&apos; Union &middot; Gurgaon</p>
                     </div>
                     <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full self-start md:self-auto shrink-0">
                       Aug 2025 — Present
