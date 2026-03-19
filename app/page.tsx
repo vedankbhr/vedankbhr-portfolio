@@ -139,7 +139,6 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
-      <ThemeToggle />
 
       {/* ═══════════════════════════════════════════
           NAVBAR
@@ -147,15 +146,21 @@ export default function Portfolio() {
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="font-bold text-lg tracking-tight hover:text-blue-600 transition-colors">VB.</Link>
+
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
             <a href="#about" className="hover:text-blue-600 transition-colors">About</a>
             <a href="#experience" className="hover:text-blue-600 transition-colors">Experience</a>
             <a href="#projects" className="hover:text-blue-600 transition-colors">Projects</a>
             <a href="#contact" className="hover:text-blue-600 transition-colors">Contact</a>
           </nav>
-          <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-sm active:scale-95 transition-all" asChild>
-            <a href="#contact">Hire Me</a>
-          </Button>
+
+          {/* Action Area: Theme Toggle + Hire Me */}
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-sm active:scale-95 transition-all" asChild>
+              <a href="#contact">Hire Me</a>
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -505,7 +510,7 @@ export default function Portfolio() {
           FOOTER
          ═══════════════════════════════════════════ */}
       <footer className="py-8 text-center border-t border-border/40 text-sm text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar.</p>
+        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar. Built with Next.js.</p>
       </footer>
     </div>
   )
