@@ -4,8 +4,6 @@ import type React from "react"
 import Link from "next/link"
 import { motion, useInView, useMotionValue, useMotionTemplate } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Mail,
@@ -38,9 +36,8 @@ const TOOLS = [
   { name: "Google AI Studio", icon: "google", type: "simpleicon" },
   { name: "n8n", icon: "n8n", type: "simpleicon" },
   { name: "LangChain", icon: "langchain", type: "simpleicon", invert: true },
-  { name: "VS Code", icon: "visualstudiocode", type: "simpleicon" },
+  { name: "GitHub", icon: "github", type: "simpleicon", invert: true },
   { name: "Vercel", icon: "vercel", type: "simpleicon", invert: true },
-  { name: "Vercel v0", icon: <Sparkles className="w-4 h-4 text-foreground" />, type: "lucide" },
   { name: "Next.js", icon: "nextdotjs", type: "simpleicon", invert: true },
   { name: "Supabase", icon: "supabase", type: "simpleicon" },
   { name: "Firecrawl", icon: <Flame className="w-4 h-4 text-orange-500" />, type: "lucide" },
@@ -189,18 +186,6 @@ function SpotlightCard({
 }
 
 export default function Portfolio() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const subject = encodeURIComponent("Portfolio Inquiry")
-    const body = encodeURIComponent(
-      `Hi Vedank,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )
-    window.open(`mailto:vedankbhatnagar165@gmail.com?subject=${subject}&body=${body}`, "_blank")
-    setFormData({ name: "", email: "", message: "" })
-  }
-
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
       <ThemeToggle />
@@ -484,8 +469,8 @@ export default function Portfolio() {
                     Jonathan is an AI HR partner that guides managers through structured, conversational feedback collection using the SBI method. He asks for each component step-by-step and drafts polished performance reviews.
                   </p>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-blue-500/30 transition-colors">SBI Framework</span>
-                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-blue-500/30 transition-colors">Agentic Workflow</span>
+                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-violet-500/30 transition-colors">SBI Framework</span>
+                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-violet-500/30 transition-colors">Agentic Workflow</span>
                   </div>
                 </div>
               </div>
@@ -686,7 +671,7 @@ export default function Portfolio() {
           FOOTER
          ═══════════════════════════════════════════ */}
       <footer className="py-8 text-center border-t border-border/40 text-sm text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar. Built with Next.js.</p>
+        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar</p>
       </footer>
     </div>
   )
