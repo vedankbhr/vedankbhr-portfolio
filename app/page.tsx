@@ -2,10 +2,8 @@
 
 import type React from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Mail,
@@ -21,7 +19,9 @@ import {
   Bot,
   MessageSquare,
   CalendarDays,
-  Heart
+  Heart,
+  Flame,
+  Box
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
@@ -29,10 +29,10 @@ import { useState, useEffect, useRef } from "react"
    DATA
    ───────────────────────────────────────────── */
 
-// Tools configured to fetch official SVG logos from SimpleIcons CDN
+// Tools configured to fetch official SVG logos from SimpleIcons CDN or use Lucide fallbacks
 const TOOLS = [
   { name: "Gemini", icon: "googlegemini", type: "simpleicon" },
-  { name: "ChatGPT", icon: "openai", type: "simpleicon", invert: true },
+  { name: "OpenAI", icon: "openai", type: "simpleicon", invert: true },
   { name: "Anthropic", icon: "anthropic", type: "simpleicon", invert: true },
   { name: "HuggingFace", icon: "huggingface", type: "simpleicon" },
   { name: "Google AI Studio", icon: "google", type: "simpleicon" },
@@ -41,6 +41,9 @@ const TOOLS = [
   { name: "Vercel", icon: "vercel", type: "simpleicon", invert: true },
   { name: "Next.js", icon: "nextdotjs", type: "simpleicon", invert: true },
   { name: "Supabase", icon: "supabase", type: "simpleicon" },
+  { name: "Firecrawl", icon: <Flame className="w-4 h-4 text-orange-500" />, type: "lucide" },
+  { name: "Ollama", icon: "ollama", type: "simpleicon", invert: true },
+  { name: "LM Studio", icon: <Box className="w-4 h-4 text-blue-500" />, type: "lucide" },
   { name: "Lovable", icon: <Heart className="w-4 h-4 text-pink-500 fill-pink-500/20" />, type: "lucide" },
   { name: "Figma", icon: "figma", type: "simpleicon" },
   { name: "Notion", icon: "notion", type: "simpleicon", invert: true },
@@ -105,37 +108,27 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 function AnimatedCount({ value, suffix = "", className = "" }: { value: number; suffix?: string; className?: string }) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
-  const hasRun = useRef(false)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
 
   useEffect(() => {
-    if (typeof window === "undefined") return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasRun.current) {
-          hasRun.current = true
-          let start = 0
-          const duration = 1400
-          const step = Math.ceil(value / (duration / 16))
-          const timer = setInterval(() => {
-            start += step
-            if (start >= value) {
-              setCount(value)
-              clearInterval(timer)
-            } else {
-              setCount(start)
-            }
-          }, 16)
+    if (isInView) {
+      let start = 0
+      const duration = 1400
+      const step = Math.max(1, Math.ceil(value / (duration / 16)))
+
+      const timer = setInterval(() => {
+        start += step
+        if (start >= value) {
+          setCount(value)
+          clearInterval(timer)
+        } else {
+          setCount(start)
         }
-      },
-      { threshold: 0.5 }
-    )
+      }, 16)
 
-    setTimeout(() => {
-      if (ref.current) observer.observe(ref.current)
-    }, 0)
-
-    return () => observer.disconnect()
-  }, [value])
+      return () => clearInterval(timer)
+    }
+  }, [isInView, value])
 
   return (
     <span ref={ref} className={className}>
@@ -145,18 +138,6 @@ function AnimatedCount({ value, suffix = "", className = "" }: { value: number; 
 }
 
 export default function Portfolio() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const subject = encodeURIComponent("Portfolio Inquiry")
-    const body = encodeURIComponent(
-      `Hi Vedank,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )
-    window.open(`mailto:vedankbhatnagar165@gmail.com?subject=${subject}&body=${body}`, "_blank")
-    setFormData({ name: "", email: "", message: "" })
-  }
-
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
       <ThemeToggle />
@@ -175,11 +156,11 @@ export default function Portfolio() {
             <a href="#contact" className="hover:text-blue-600 transition-colors">Contact</a>
           </nav>
 
-          {/* Action Area: Theme Toggle + Hire Me */}
+          {/* Action Area: Theme Toggle + Collaborate */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
             <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-sm active:scale-95 transition-all" asChild>
-              <a href="#contact">Hire Me</a>
+              <a href="#contact">Let's Collaborate</a>
             </Button>
           </div>
         </div>
@@ -395,7 +376,7 @@ export default function Portfolio() {
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center gap-4">
                   <Terminal className="w-8 h-8 text-violet-600" /> Featured Work
                 </h2>
-                <p className="text-muted-foreground max-w-lg">A selection of AI agents and platforms I've built and engineered.</p>
+                <p className="text-muted-foreground max-w-lg">A selection of AI agents and platforms I&apos;ve built and engineered.</p>
               </div>
             </div>
           </FadeIn>
@@ -455,7 +436,7 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          EDUCATION & INTERNSHIPS (Grid Layout Reordered)
+          EDUCATION & INTERNSHIPS
          ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 border-t border-border/40 bg-muted/10">
         <div className="max-w-6xl mx-auto space-y-16">
@@ -474,7 +455,7 @@ export default function Portfolio() {
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                     <div>
                       <h3 className="text-lg font-bold group-hover:text-blue-600 transition-colors">PGP Rise General Management</h3>
-                      <p className="text-sm font-medium text-muted-foreground mt-1">Masters' Union &middot; Gurgaon</p>
+                      <p className="text-sm font-medium text-muted-foreground mt-1">Masters&apos; Union &middot; Gurgaon</p>
                     </div>
                     <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full self-start md:self-auto shrink-0">
                       Aug 2025 — Present
