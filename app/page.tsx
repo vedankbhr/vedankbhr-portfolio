@@ -12,7 +12,6 @@ import {
   Linkedin,
   ArrowRight,
   MapPin,
-  Phone,
   Terminal,
   Cpu,
   TrendingUp,
@@ -73,10 +72,10 @@ const EXPERIENCE = [
    ───────────────────────────────────────────── */
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 25 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.5, delay, ease: "easeOut" }}
+    viewport={{ once: true, amount: 0.1 }}
+    transition={{ duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
     className={className}
   >
     {children}
@@ -97,7 +96,7 @@ export default function Portfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30">
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
       <ThemeToggle />
 
       {/* ═══════════════════════════════════════════
@@ -112,7 +111,7 @@ export default function Portfolio() {
             <a href="#projects" className="hover:text-foreground transition-colors">Projects</a>
             <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
           </nav>
-          <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white" asChild>
+          <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-sm" asChild>
             <a href="#contact">Hire Me</a>
           </Button>
         </div>
@@ -154,10 +153,10 @@ export default function Portfolio() {
           </FadeIn>
 
           <FadeIn delay={0.3} className="flex flex-wrap gap-4">
-            <Button size="lg" className="rounded-full h-12 px-8 bg-foreground text-background hover:bg-foreground/90 gap-2" asChild>
+            <Button size="lg" className="rounded-full h-12 px-8 bg-foreground text-background hover:bg-foreground/90 shadow-sm gap-2" asChild>
               <a href="#experience">View My Work <ArrowRight className="w-4 h-4" /></a>
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full h-12 px-8 gap-2" asChild>
+            <Button size="lg" variant="outline" className="rounded-full h-12 px-8 gap-2 bg-background/50 backdrop-blur-sm" asChild>
               <a href="https://linkedin.com/in/vedankbhr" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="w-4 h-4" /> Connect
               </a>
@@ -196,7 +195,7 @@ export default function Portfolio() {
             </FadeIn>
 
             {/* Stat Card 2 */}
-            <FadeIn delay={0.3} className="md:col-span-2 row-span-1 bg-gradient-to-br from-blue-600 to-violet-600 rounded-3xl p-8 text-white flex flex-col justify-center relative overflow-hidden">
+            <FadeIn delay={0.3} className="md:col-span-2 row-span-1 bg-gradient-to-br from-blue-600 to-violet-600 rounded-3xl p-8 text-white flex flex-col justify-center relative overflow-hidden shadow-md">
               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
               <p className="text-sm font-semibold text-blue-100 uppercase tracking-wider mb-2 relative z-10">Data Processing</p>
               <div className="flex items-end gap-3 relative z-10">
@@ -248,7 +247,9 @@ export default function Portfolio() {
                       <div className="absolute -left-[37px] md:left-[calc(100%-4px)] top-2 w-2 h-2 rounded-full bg-blue-600 ring-4 ring-background z-10" />
 
                       <p className="text-sm font-bold text-foreground mb-1">{exp.date}</p>
-                      <p className="text-sm text-muted-foreground">{exp.location}</p>
+                      <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                        <MapPin className="w-3 h-3" /> {exp.location}
+                      </p>
                     </div>
 
                     {/* Content */}
@@ -417,8 +418,8 @@ export default function Portfolio() {
                 <a href="mailto:vedankbhatnagar165@gmail.com" className="flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background font-medium rounded-full hover:bg-foreground/90 transition-colors">
                   <Mail className="w-4 h-4" /> vedankbhatnagar165@gmail.com
                 </a>
-                <a href="tel:+917426019793" className="flex items-center justify-center gap-2 px-6 py-3 bg-background border border-border/50 font-medium rounded-full hover:bg-muted transition-colors">
-                  <Phone className="w-4 h-4" /> +91 7426019793
+                <a href="https://linkedin.com/in/vedankbhr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-6 py-3 bg-background border border-border/50 font-medium rounded-full hover:bg-muted transition-colors shadow-sm">
+                  <Linkedin className="w-4 h-4" /> Connect on LinkedIn
                 </a>
               </div>
 
@@ -449,7 +450,7 @@ export default function Portfolio() {
                   required
                   className="bg-background border-border/50 rounded-xl resize-none"
                 />
-                <Button type="submit" className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-white">
+                <Button type="submit" className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-md transition-all">
                   Send Message
                 </Button>
               </form>
