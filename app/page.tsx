@@ -4,6 +4,8 @@ import type React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Mail,
@@ -18,17 +20,30 @@ import {
   Sparkles,
   Bot,
   MessageSquare,
-  CalendarDays
+  CalendarDays,
+  Heart
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
 /* ─────────────────────────────────────────────
    DATA
    ───────────────────────────────────────────── */
+
+// Tools configured to fetch official SVG logos from SimpleIcons CDN
 const TOOLS = [
-  "Gemini", "ChatGPT", "Anthropic", "HuggingFace", "Google AI Studio",
-  "n8n", "LangChain", "Vercel", "Next.js", "Supabase",
-  "Lovable", "Figma", "Notion", "Linear", "PostHog"
+  { name: "Gemini", icon: "googlegemini", type: "simpleicon" },
+  { name: "ChatGPT", icon: "openai", type: "simpleicon", invert: true },
+  { name: "Anthropic", icon: "anthropic", type: "simpleicon", invert: true },
+  { name: "HuggingFace", icon: "huggingface", type: "simpleicon" },
+  { name: "Google AI Studio", icon: "google", type: "simpleicon" },
+  { name: "n8n", icon: "n8n", type: "simpleicon" },
+  { name: "LangChain", icon: "langchain", type: "simpleicon", invert: true },
+  { name: "Vercel", icon: "vercel", type: "simpleicon", invert: true },
+  { name: "Next.js", icon: "nextdotjs", type: "simpleicon", invert: true },
+  { name: "Supabase", icon: "supabase", type: "simpleicon" },
+  { name: "Lovable", icon: <Heart className="w-4 h-4 text-pink-500 fill-pink-500/20" />, type: "lucide" },
+  { name: "Figma", icon: "figma", type: "simpleicon" },
+  { name: "Notion", icon: "notion", type: "simpleicon", invert: true },
 ]
 
 const EXPERIENCE = [
@@ -130,8 +145,21 @@ function AnimatedCount({ value, suffix = "", className = "" }: { value: number; 
 }
 
 export default function Portfolio() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const subject = encodeURIComponent("Portfolio Inquiry")
+    const body = encodeURIComponent(
+      `Hi Vedank,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )
+    window.open(`mailto:vedankbhatnagar165@gmail.com?subject=${subject}&body=${body}`, "_blank")
+    setFormData({ name: "", email: "", message: "" })
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
+      <ThemeToggle />
 
       {/* ═══════════════════════════════════════════
           NAVBAR
@@ -221,10 +249,19 @@ export default function Portfolio() {
           {[...TOOLS, ...TOOLS].map((tool, i) => (
             <div
               key={i}
-              className="flex items-center gap-2.5 px-4 py-2.5 bg-background border border-border/50 rounded-full shadow-sm text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-blue-500/30 hover:shadow-md transition-all cursor-default"
+              className="flex items-center gap-2.5 px-5 py-2.5 bg-background border border-border/50 rounded-full shadow-sm text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-blue-500/30 hover:shadow-md transition-all cursor-default"
             >
-              <span className="w-2 h-2 rounded-full bg-blue-500/50" />
-              {tool}
+              {tool.type === "simpleicon" ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={`https://cdn.simpleicons.org/${tool.icon}`}
+                  alt={`${tool.name} logo`}
+                  className={`w-4 h-4 object-contain ${tool.invert ? "dark:invert" : ""}`}
+                />
+              ) : (
+                tool.icon
+              )}
+              {tool.name}
             </div>
           ))}
         </motion.div>
