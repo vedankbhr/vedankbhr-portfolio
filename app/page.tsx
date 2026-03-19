@@ -278,19 +278,19 @@ export default function Portfolio() {
           {[...TOOLS, ...TOOLS].map((tool, i) => (
             <div
               key={i}
-              className="flex items-center gap-2.5 px-5 py-2.5 bg-background border border-border/50 rounded-full shadow-sm text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-blue-500/30 hover:shadow-md transition-all cursor-default"
+              className="flex items-center justify-center gap-2.5 px-5 py-2 bg-background border border-border/50 rounded-full shadow-sm text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-blue-500/30 hover:shadow-md transition-all cursor-default"
             >
               {tool.type === "simpleicon" ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={`https://cdn.simpleicons.org/${tool.icon}`}
                   alt={`${tool.name} logo`}
-                  className={`w-4 h-4 object-contain ${tool.invert ? "dark:invert" : ""}`}
+                  className={`w-4 h-4 block object-contain shrink-0 ${tool.invert ? "dark:invert" : ""}`}
                 />
               ) : (
-                tool.icon
+                <span className="flex items-center justify-center shrink-0 w-4 h-4">{tool.icon}</span>
               )}
-              {tool.name}
+              <span className="leading-none pt-[2px]">{tool.name}</span>
             </div>
           ))}
         </motion.div>
@@ -469,8 +469,8 @@ export default function Portfolio() {
                     Jonathan is an AI HR partner that guides managers through structured, conversational feedback collection using the SBI method. He asks for each component step-by-step and drafts polished performance reviews.
                   </p>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-violet-500/30 transition-colors">SBI Framework</span>
-                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-violet-500/30 transition-colors">Agentic Workflow</span>
+                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-blue-500/30 transition-colors">SBI Framework</span>
+                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-blue-500/30 transition-colors">Agentic Workflow</span>
                   </div>
                 </div>
               </div>
@@ -671,7 +671,7 @@ export default function Portfolio() {
           FOOTER
          ═══════════════════════════════════════════ */}
       <footer className="py-8 text-center border-t border-border/40 text-sm text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar</p>
+        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar. Built with Next.js.</p>
       </footer>
     </div>
   )
