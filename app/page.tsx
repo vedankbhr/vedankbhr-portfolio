@@ -4,8 +4,6 @@ import type React from "react"
 import Link from "next/link"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Mail,
@@ -23,11 +21,7 @@ import {
   CalendarDays,
   Heart,
   Flame,
-  Box,
-  Map,
-  Target,
-  Workflow,
-  Rocket
+  Box
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
@@ -44,9 +38,7 @@ const TOOLS = [
   { name: "Google AI Studio", icon: "google", type: "simpleicon" },
   { name: "n8n", icon: "n8n", type: "simpleicon" },
   { name: "LangChain", icon: "langchain", type: "simpleicon", invert: true },
-  { name: "VS Code", icon: "visualstudiocode", type: "simpleicon" },
   { name: "Vercel", icon: "vercel", type: "simpleicon", invert: true },
-  { name: "Vercel v0", icon: <Sparkles className="w-4 h-4 text-foreground" />, type: "lucide" },
   { name: "Next.js", icon: "nextdotjs", type: "simpleicon", invert: true },
   { name: "Supabase", icon: "supabase", type: "simpleicon" },
   { name: "Firecrawl", icon: <Flame className="w-4 h-4 text-orange-500" />, type: "lucide" },
@@ -55,33 +47,6 @@ const TOOLS = [
   { name: "Lovable", icon: <Heart className="w-4 h-4 text-pink-500 fill-pink-500/20" />, type: "lucide" },
   { name: "Figma", icon: "figma", type: "simpleicon" },
   { name: "Notion", icon: "notion", type: "simpleicon", invert: true },
-]
-
-const PLAYBOOK = [
-  {
-    step: "01",
-    title: "Discovery",
-    desc: "Translate abstract founder vision into scoped, actionable MVP requirements.",
-    icon: <Map className="w-5 h-5 text-blue-500" />
-  },
-  {
-    step: "02",
-    title: "Strategy",
-    desc: "Design PLG loops, calculate unit economics, and define clear PMF metrics.",
-    icon: <Target className="w-5 h-5 text-violet-500" />
-  },
-  {
-    step: "03",
-    title: "Architecture",
-    desc: "Bridge engineering and business to build scalable data pipelines & RLHF frameworks.",
-    icon: <Workflow className="w-5 h-5 text-emerald-500" />
-  },
-  {
-    step: "04",
-    title: "Execution",
-    desc: "Ship fast, establish evaluation dashboards, and rapidly iterate on user telemetry.",
-    icon: <Rocket className="w-5 h-5 text-amber-500" />
-  }
 ]
 
 const EXPERIENCE = [
@@ -143,37 +108,27 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 function AnimatedCount({ value, suffix = "", className = "" }: { value: number; suffix?: string; className?: string }) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
-  const hasRun = useRef(false)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
 
   useEffect(() => {
-    if (typeof window === "undefined") return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasRun.current) {
-          hasRun.current = true
-          let start = 0
-          const duration = 1400
-          const step = Math.ceil(value / (duration / 16))
-          const timer = setInterval(() => {
-            start += step
-            if (start >= value) {
-              setCount(value)
-              clearInterval(timer)
-            } else {
-              setCount(start)
-            }
-          }, 16)
+    if (isInView) {
+      let start = 0
+      const duration = 1400
+      const step = Math.max(1, Math.ceil(value / (duration / 16)))
+
+      const timer = setInterval(() => {
+        start += step
+        if (start >= value) {
+          setCount(value)
+          clearInterval(timer)
+        } else {
+          setCount(start)
         }
-      },
-      { threshold: 0.5 }
-    )
+      }, 16)
 
-    setTimeout(() => {
-      if (ref.current) observer.observe(ref.current)
-    }, 0)
-
-    return () => observer.disconnect()
-  }, [value])
+      return () => clearInterval(timer)
+    }
+  }, [isInView, value])
 
   return (
     <span ref={ref} className={className}>
@@ -183,18 +138,6 @@ function AnimatedCount({ value, suffix = "", className = "" }: { value: number; 
 }
 
 export default function Portfolio() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const subject = encodeURIComponent("Portfolio Inquiry")
-    const body = encodeURIComponent(
-      `Hi Vedank,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )
-    window.open(`mailto:vedankbhatnagar165@gmail.com?subject=${subject}&body=${body}`, "_blank")
-    setFormData({ name: "", email: "", message: "" })
-  }
-
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
       <ThemeToggle />
@@ -217,7 +160,7 @@ export default function Portfolio() {
           <div className="flex items-center gap-3">
             <ThemeToggle />
             <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-sm active:scale-95 transition-all" asChild>
-              <a href="#contact">Let&apos;s Collaborate</a>
+              <a href="#contact">Let's Collaborate</a>
             </Button>
           </div>
         </div>
@@ -359,52 +302,9 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          THE 0 TO 1 PLAYBOOK
-         ═══════════════════════════════════════════ */}
-      <section className="py-16 px-6 border-t border-border/40">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <div className="mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 flex items-center gap-3">
-                <Terminal className="w-7 h-7 text-blue-600" /> The 0 &rarr; 1 Playbook
-              </h2>
-              <p className="text-muted-foreground max-w-2xl leading-relaxed">
-                My repeatable framework for turning founder-level ambiguity into scalable, market-ready AI products.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PLAYBOOK.map((item, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="group relative p-8 bg-muted/20 border border-border/50 rounded-3xl h-full flex flex-col hover:-translate-y-1 hover:shadow-xl hover:border-blue-500/30 transition-all duration-300 overflow-hidden">
-                  {/* Background Watermark Number */}
-                  <div className="absolute -bottom-6 -right-2 text-8xl font-black text-muted-foreground/5 pointer-events-none group-hover:text-blue-500/5 transition-colors duration-500 select-none">
-                    {item.step}
-                  </div>
-
-                  <div className="w-12 h-12 rounded-2xl bg-background border border-border/50 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                    {item.icon}
-                  </div>
-
-                  <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-sm text-muted-foreground leading-relaxed relative z-10">
-                    {item.desc}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
           EXPERIENCE (TIMELINE)
          ═══════════════════════════════════════════ */}
-      <section id="experience" className="py-24 px-6 border-t border-border/40 bg-muted/10">
+      <section id="experience" className="py-24 px-6 border-t border-border/40 mt-12 bg-muted/10">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-16 flex items-center gap-4">
