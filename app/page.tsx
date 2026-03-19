@@ -2,8 +2,10 @@
 
 import type React from "react"
 import Link from "next/link"
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useMotionValue, useMotionTemplate } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Mail,
@@ -28,8 +30,6 @@ import { useState, useEffect, useRef } from "react"
 /* ─────────────────────────────────────────────
    DATA
    ───────────────────────────────────────────── */
-
-// Tools configured to fetch official SVG logos from SimpleIcons CDN or use Lucide fallbacks
 const TOOLS = [
   { name: "Gemini", icon: "googlegemini", type: "simpleicon" },
   { name: "OpenAI", icon: "openai", type: "simpleicon", invert: true },
@@ -38,7 +38,9 @@ const TOOLS = [
   { name: "Google AI Studio", icon: "google", type: "simpleicon" },
   { name: "n8n", icon: "n8n", type: "simpleicon" },
   { name: "LangChain", icon: "langchain", type: "simpleicon", invert: true },
+  { name: "VS Code", icon: "visualstudiocode", type: "simpleicon" },
   { name: "Vercel", icon: "vercel", type: "simpleicon", invert: true },
+  { name: "Vercel v0", icon: <Sparkles className="w-4 h-4 text-foreground" />, type: "lucide" },
   { name: "Next.js", icon: "nextdotjs", type: "simpleicon", invert: true },
   { name: "Supabase", icon: "supabase", type: "simpleicon" },
   { name: "Firecrawl", icon: <Flame className="w-4 h-4 text-orange-500" />, type: "lucide" },
@@ -137,7 +139,68 @@ function AnimatedCount({ value, suffix = "", className = "" }: { value: number; 
   )
 }
 
+/* ─── PURE UI MAGIC: SPOTLIGHT HOVER CARD ─── */
+function SpotlightCard({
+  children,
+  className = "",
+  delay = 0,
+  bgClass = "bg-muted/40 hover:border-blue-500/30",
+  spotColor = "rgba(59,130,246,0.15)"
+}: {
+  children: React.ReactNode,
+  className?: string,
+  delay?: number,
+  bgClass?: string,
+  spotColor?: string
+}) {
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect()
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
+  }
+
+  return (
+    <FadeIn delay={delay} className={className}>
+      <div
+        className={`group relative h-full w-full overflow-hidden rounded-3xl border border-border/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl ${bgClass}`}
+        onMouseMove={handleMouseMove}
+      >
+        <motion.div
+          className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-10"
+          style={{
+            background: useMotionTemplate`
+              radial-gradient(
+                650px circle at ${mouseX}px ${mouseY}px,
+                ${spotColor},
+                transparent 80%
+              )
+            `,
+          }}
+        />
+        <div className="relative z-20 h-full w-full p-8 flex flex-col justify-center">
+          {children}
+        </div>
+      </div>
+    </FadeIn>
+  )
+}
+
 export default function Portfolio() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const subject = encodeURIComponent("Portfolio Inquiry")
+    const body = encodeURIComponent(
+      `Hi Vedank,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )
+    window.open(`mailto:vedankbhatnagar165@gmail.com?subject=${subject}&body=${body}`, "_blank")
+    setFormData({ name: "", email: "", message: "" })
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-500/30 scroll-smooth">
       <ThemeToggle />
@@ -160,7 +223,7 @@ export default function Portfolio() {
           <div className="flex items-center gap-3">
             <ThemeToggle />
             <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-sm active:scale-95 transition-all" asChild>
-              <a href="#contact">Let's Collaborate</a>
+              <a href="#contact">Let&apos;s Collaborate</a>
             </Button>
           </div>
         </div>
@@ -249,22 +312,21 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          BENTO GRID (Stats & Skills)
+          BENTO GRID (Spotlight Edition)
          ═══════════════════════════════════════════ */}
       <section className="py-12 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[200px]">
 
             {/* Stat Card 1 */}
-            <FadeIn delay={0.1} className="md:col-span-1 row-span-1 bg-muted/40 rounded-3xl p-8 border border-border/50 flex flex-col justify-center relative overflow-hidden group hover:-translate-y-1 hover:shadow-lg hover:border-blue-500/30 transition-all duration-300">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-colors" />
+            <SpotlightCard delay={0.1} className="md:col-span-1 row-span-1">
               <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Experience</p>
               <AnimatedCount value={2} suffix="+" className="text-5xl font-bold tracking-tight text-foreground block" />
               <p className="text-sm text-muted-foreground mt-2">Scaling AI Startups</p>
-            </FadeIn>
+            </SpotlightCard>
 
             {/* Core Skills Box */}
-            <FadeIn delay={0.2} className="md:col-span-2 row-span-1 bg-muted/40 rounded-3xl p-8 border border-border/50 flex flex-col justify-center hover:-translate-y-1 hover:shadow-lg hover:border-blue-500/30 transition-all duration-300">
+            <SpotlightCard delay={0.2} className="md:col-span-2 row-span-1">
               <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Cpu className="w-4 h-4" /> Core Competencies
               </p>
@@ -275,27 +337,32 @@ export default function Portfolio() {
                   </span>
                 ))}
               </div>
-            </FadeIn>
+            </SpotlightCard>
 
-            {/* Stat Card 2 */}
-            <FadeIn delay={0.3} className="md:col-span-2 row-span-1 bg-gradient-to-br from-blue-600 to-violet-600 rounded-3xl p-8 text-white flex flex-col justify-center relative overflow-hidden shadow-md hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300">
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+            {/* Stat Card 2 (Gradient Background) */}
+            <SpotlightCard
+              delay={0.3}
+              className="md:col-span-2 row-span-1 text-white"
+              bgClass="bg-gradient-to-br from-blue-600 to-violet-600 hover:shadow-blue-500/20 hover:border-blue-400/50"
+              spotColor="rgba(255,255,255,0.25)"
+            >
+              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay z-0 pointer-events-none" />
               <p className="text-sm font-semibold text-blue-100 uppercase tracking-wider mb-2 relative z-10">Data Processing</p>
               <div className="flex items-end gap-3 relative z-10">
                 <AnimatedCount value={500} suffix="K+" className="text-5xl font-bold tracking-tight block" />
                 <p className="text-lg font-medium text-blue-100 mb-1">Data Points</p>
               </div>
               <p className="text-sm text-blue-50 mt-2 max-w-md relative z-10">Architected automated routing pipelines that increased candidate-review throughput by 30%.</p>
-            </FadeIn>
+            </SpotlightCard>
 
             {/* Stat Card 3 */}
-            <FadeIn delay={0.4} className="md:col-span-1 row-span-1 bg-muted/40 rounded-3xl p-8 border border-border/50 flex flex-col justify-center hover:-translate-y-1 hover:shadow-lg hover:border-violet-500/30 transition-all duration-300">
+            <SpotlightCard delay={0.4} className="md:col-span-1 row-span-1" bgClass="bg-muted/40 hover:border-violet-500/30" spotColor="rgba(139,92,246,0.15)">
               <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-2">
                 <TrendingUp className="w-4 h-4" /> Financials
               </p>
               <AnimatedCount value={87} suffix="%" className="text-5xl font-bold tracking-tight text-foreground block" />
               <p className="text-sm text-muted-foreground mt-2">Gross Margin Modeled</p>
-            </FadeIn>
+            </SpotlightCard>
 
           </div>
         </div>
