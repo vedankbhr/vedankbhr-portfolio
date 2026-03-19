@@ -21,7 +21,7 @@ import {
   Bot,
   MessageSquare
 } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 
 /* ─────────────────────────────────────────────
    DATA
@@ -81,6 +81,48 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
     {children}
   </motion.div>
 )
+
+function AnimatedCount({ value, suffix = "", className = "" }: { value: number; suffix?: string; className?: string }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef<HTMLSpanElement>(null)
+  const hasRun = useRef(false)
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasRun.current) {
+          hasRun.current = true
+          let start = 0
+          const duration = 1400
+          const step = Math.ceil(value / (duration / 16))
+          const timer = setInterval(() => {
+            start += step
+            if (start >= value) {
+              setCount(value)
+              clearInterval(timer)
+            } else {
+              setCount(start)
+            }
+          }, 16)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    setTimeout(() => {
+      if (ref.current) observer.observe(ref.current)
+    }, 0)
+
+    return () => observer.disconnect()
+  }, [value])
+
+  return (
+    <span ref={ref} className={className}>
+      {count}{suffix}
+    </span>
+  )
+}
 
 export default function Portfolio() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
@@ -176,7 +218,7 @@ export default function Portfolio() {
             <FadeIn delay={0.1} className="md:col-span-1 row-span-1 bg-muted/40 rounded-3xl p-8 border border-border/50 flex flex-col justify-center relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-colors" />
               <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Experience</p>
-              <p className="text-5xl font-bold tracking-tight text-foreground">2+ Yrs</p>
+              <AnimatedCount value={2} suffix="+" className="text-5xl font-bold tracking-tight text-foreground block" />
               <p className="text-sm text-muted-foreground mt-2">Scaling AI Startups</p>
             </FadeIn>
 
@@ -199,7 +241,7 @@ export default function Portfolio() {
               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
               <p className="text-sm font-semibold text-blue-100 uppercase tracking-wider mb-2 relative z-10">Data Processing</p>
               <div className="flex items-end gap-3 relative z-10">
-                <p className="text-5xl font-bold tracking-tight">500K+</p>
+                <AnimatedCount value={500} suffix="K+" className="text-5xl font-bold tracking-tight block" />
                 <p className="text-lg font-medium text-blue-100 mb-1">Data Points</p>
               </div>
               <p className="text-sm text-blue-50 mt-2 max-w-md relative z-10">Architected automated routing pipelines that increased candidate-review throughput by 30%.</p>
@@ -210,7 +252,7 @@ export default function Portfolio() {
               <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-2">
                 <TrendingUp className="w-4 h-4" /> Financials
               </p>
-              <p className="text-5xl font-bold tracking-tight text-foreground">87%</p>
+              <AnimatedCount value={87} suffix="%" className="text-5xl font-bold tracking-tight text-foreground block" />
               <p className="text-sm text-muted-foreground mt-2">Gross Margin Modeled</p>
             </FadeIn>
 
