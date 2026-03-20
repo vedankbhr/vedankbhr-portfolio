@@ -1,11 +1,13 @@
 "use client"
 
 import type React from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { ArrowLeft, Bot, MessageSquare, Zap, Globe, Sparkles, ExternalLink, Scale, LayoutDashboard } from "lucide-react"
+import { ArrowLeft, Bot, MessageSquare, Zap, Globe, Sparkles, ExternalLink, Scale, LayoutDashboard, Play } from "lucide-react"
 
 /* ─────────────────────────────────────────────
    COMPONENTS
@@ -21,6 +23,36 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
     {children}
   </motion.div>
 )
+
+/* Facade Component to prevent iframe scroll lag */
+function DemoEmbed({ src, title }: { src: string, title: string }) {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  if (isLoaded) {
+    return (
+      <iframe
+        src={src}
+        className="absolute inset-0 w-full h-full border-0 animate-in fade-in duration-500"
+        title={title}
+        allow="microphone; camera"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+      />
+    )
+  }
+
+  return (
+    <div
+      onClick={() => setIsLoaded(true)}
+      className="absolute inset-0 flex flex-col items-center justify-center bg-muted/10 group cursor-pointer hover:bg-muted/20 transition-colors"
+    >
+      <div className="w-16 h-16 rounded-full bg-background border border-border/50 shadow-sm flex items-center justify-center group-hover:scale-110 group-hover:shadow-md transition-all duration-300 mb-4">
+        <Play className="w-6 h-6 text-foreground ml-1" />
+      </div>
+      <p className="font-medium text-foreground">Load Interactive Demo</p>
+      <p className="text-xs text-muted-foreground mt-2">Clicking will load the live application</p>
+    </div>
+  )
+}
 
 export default function Projects() {
   return (
@@ -124,15 +156,11 @@ export default function Projects() {
                       </span>
                     </div>
                   </div>
-                  {/* The Iframe */}
+                  {/* The Facade Iframe */}
                   <div className="w-full h-[500px] md:h-[650px] relative bg-background">
-                    <iframe
+                    <DemoEmbed
                       src="https://v0-ai-chat-business-platform-omega.vercel.app/"
-                      className="absolute inset-0 w-full h-full border-0"
                       title="Coop AI Platform"
-                      loading="lazy"
-                      allow="microphone; camera"
-                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
                     />
                   </div>
                 </div>
@@ -184,15 +212,11 @@ export default function Projects() {
                       </span>
                     </div>
                   </div>
-                  {/* The Iframe */}
+                  {/* The Facade Iframe */}
                   <div className="w-full h-[400px] sm:h-[450px] relative">
-                    <iframe
+                    <DemoEmbed
                       src="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/4b67f532-ff9e-4396-aa5f-ae6130d270d5/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%238B5CF6&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
-                      className="absolute inset-0 w-full h-full border-0"
                       title="Lucy AI Agent"
-                      loading="lazy"
-                      allow="microphone; camera"
-                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
                     />
                   </div>
                 </div>
@@ -247,15 +271,11 @@ export default function Projects() {
                       </span>
                     </div>
                   </div>
-                  {/* The Iframe */}
+                  {/* The Facade Iframe */}
                   <div className="w-full h-[400px] sm:h-[450px] relative">
-                    <iframe
+                    <DemoEmbed
                       src="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/a7acb787-460d-4188-b9a8-3801f975e9a4/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%233B82F6&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
-                      className="absolute inset-0 w-full h-full border-0"
                       title="Jonathan AI Agent Tool"
-                      loading="lazy"
-                      allow="microphone; camera"
-                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
                     />
                   </div>
                 </div>
