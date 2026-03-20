@@ -21,7 +21,8 @@ import {
   CalendarDays,
   Heart,
   Flame,
-  Box
+  Box,
+  Scale
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
@@ -434,8 +435,30 @@ export default function Portfolio() {
           </FadeIn>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
+
+            {/* ── Coop AI (Full Width Featured Card) ── */}
+            <FadeIn delay={0.1} className="md:col-span-2">
+              <div className="group rounded-3xl bg-muted/30 border border-border/50 overflow-hidden hover:border-emerald-500/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 h-full flex flex-col md:flex-row">
+                <div className="h-48 md:h-auto md:w-2/5 bg-zinc-100 dark:bg-zinc-900 border-b md:border-b-0 md:border-r border-border/50 p-6 flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.1)_0%,transparent_70%)]" />
+                  <Scale className="w-16 h-16 text-emerald-500/50 group-hover:scale-125 group-hover:text-emerald-500/80 transition-all duration-500" />
+                </div>
+                <div className="p-8 md:p-10 flex-1 flex flex-col justify-center">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Coop AI</h3>
+                  <p className="text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-4">AI-Powered Business & Legal Tech Platform</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+                    A comprehensive AI platform designed to move beyond the traditional "chat bubble." Coop AI utilizes a split-screen architecture and deterministic workflow buttons to automate document analysis, flag liabilities, and streamline business operations with verifiable citations.
+                  </p>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-emerald-500/30 transition-colors">Agentic Workspace</span>
+                    <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full group-hover:border-emerald-500/30 transition-colors">Deterministic Actions</span>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
             {/* Meet Lucy */}
-            <FadeIn delay={0.1}>
+            <FadeIn delay={0.2}>
               <div className="group rounded-3xl bg-muted/30 border border-border/50 overflow-hidden hover:border-violet-500/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-500 h-full flex flex-col">
                 <div className="h-48 bg-zinc-100 dark:bg-zinc-900 border-b border-border/50 p-6 flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.1)_0%,transparent_70%)]" />
@@ -456,7 +479,7 @@ export default function Portfolio() {
             </FadeIn>
 
             {/* Meet Jonathan */}
-            <FadeIn delay={0.2}>
+            <FadeIn delay={0.3}>
               <div className="group rounded-3xl bg-muted/30 border border-border/50 overflow-hidden hover:border-blue-500/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 h-full flex flex-col">
                 <div className="h-48 bg-zinc-100 dark:bg-zinc-900 border-b border-border/50 p-6 flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)]" />
@@ -478,7 +501,7 @@ export default function Portfolio() {
           </div>
 
           {/* Dedicated Projects Page Link */}
-          <FadeIn delay={0.3} className="text-center">
+          <FadeIn delay={0.4} className="text-center">
             <Button size="lg" className="rounded-full px-8 bg-blue-600 hover:bg-blue-700 text-white gap-2 shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95 transition-all" asChild>
               <Link href="/projects">View Interactive AI Demos <ArrowRight className="w-4 h-4" /></Link>
             </Button>
@@ -671,7 +694,7 @@ export default function Portfolio() {
           FOOTER
          ═══════════════════════════════════════════ */}
       <footer className="py-8 text-center border-t border-border/40 text-sm text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar. Built with Next.js.</p>
+        <p>&copy; {new Date().getFullYear()} Vedank Bhatnagar</p>
       </footer>
     </div>
   )
