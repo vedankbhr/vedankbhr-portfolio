@@ -1,13 +1,12 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { ArrowLeft, Bot, MessageSquare, Zap, Globe, Sparkles, ExternalLink, Scale, LayoutDashboard, Play } from "lucide-react"
+import { ArrowLeft, Bot, MessageSquare, Zap, Globe, Sparkles, ExternalLink, Scale, LayoutDashboard } from "lucide-react"
 
 /* ─────────────────────────────────────────────
    COMPONENTS
@@ -24,32 +23,53 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
   </motion.div>
 )
 
-/* Facade Component to prevent iframe scroll lag */
-function DemoEmbed({ src, title }: { src: string, title: string }) {
-  const [isLoaded, setIsLoaded] = useState(false)
+/* ─── PERFORMANCE-OPTIMIZED IFRAME ─── */
+function LiveIframe({ src, title, delayMs }: { src: string, title: string, delayMs: number }) {
+  const [shouldMount, setShouldMount] = useState(false)
+  const [isScrolling, setIsScrolling] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once: true, margin: "200px" })
 
-  if (isLoaded) {
-    return (
-      <iframe
-        src={src}
-        className="absolute inset-0 w-full h-full border-0 animate-in fade-in duration-500"
-        title={title}
-        allow="microphone; camera"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-      />
-    )
-  }
+  // 1. Wait for Framer Motion entry animation to finish before mounting the heavy iframe
+  useEffect(() => {
+    if (isInView) {
+      const timer = setTimeout(() => setShouldMount(true), delayMs)
+      return () => clearTimeout(timer)
+    }
+  }, [isInView, delayMs])
+
+  // 2. Disable iframe pointer events while actively scrolling to prevent scroll hijack/jank
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+    const handleScroll = () => {
+      setIsScrolling(true)
+      clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => setIsScrolling(false), 200)
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      clearTimeout(scrollTimeout)
+    }
+  }, [])
 
   return (
-    <div
-      onClick={() => setIsLoaded(true)}
-      className="absolute inset-0 flex flex-col items-center justify-center bg-muted/10 group cursor-pointer hover:bg-muted/20 transition-colors"
-    >
-      <div className="w-16 h-16 rounded-full bg-background border border-border/50 shadow-sm flex items-center justify-center group-hover:scale-110 group-hover:shadow-md transition-all duration-300 mb-4">
-        <Play className="w-6 h-6 text-foreground ml-1" />
-      </div>
-      <p className="font-medium text-foreground">Load Interactive Demo</p>
-      <p className="text-xs text-muted-foreground mt-2">Clicking will load the live application</p>
+    <div ref={ref} className="w-full h-full relative bg-muted/10 z-0" style={{ transform: "translateZ(0)" }}>
+      {!shouldMount && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-6 h-6 border-2 border-foreground/20 border-t-foreground rounded-full animate-spin" />
+        </div>
+      )}
+      {shouldMount && (
+        <iframe
+          src={src}
+          className="absolute inset-0 w-full h-full border-0 animate-in fade-in duration-1000"
+          style={{ pointerEvents: isScrolling ? "none" : "auto" }}
+          title={title}
+          allow="microphone; camera"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+        />
+      )}
     </div>
   )
 }
@@ -156,11 +176,12 @@ export default function Projects() {
                       </span>
                     </div>
                   </div>
-                  {/* The Facade Iframe */}
+                  {/* The Optimized Iframe */}
                   <div className="w-full h-[500px] md:h-[650px] relative bg-background">
-                    <DemoEmbed
+                    <LiveIframe
                       src="https://v0-ai-chat-business-platform-omega.vercel.app/"
                       title="Coop AI Platform"
+                      delayMs={600}
                     />
                   </div>
                 </div>
@@ -212,11 +233,12 @@ export default function Projects() {
                       </span>
                     </div>
                   </div>
-                  {/* The Facade Iframe */}
+                  {/* The Optimized Iframe */}
                   <div className="w-full h-[400px] sm:h-[450px] relative">
-                    <DemoEmbed
+                    <LiveIframe
                       src="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/4b67f532-ff9e-4396-aa5f-ae6130d270d5/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%238B5CF6&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
                       title="Lucy AI Agent"
+                      delayMs={700}
                     />
                   </div>
                 </div>
@@ -271,11 +293,12 @@ export default function Projects() {
                       </span>
                     </div>
                   </div>
-                  {/* The Facade Iframe */}
+                  {/* The Optimized Iframe */}
                   <div className="w-full h-[400px] sm:h-[450px] relative">
-                    <DemoEmbed
+                    <LiveIframe
                       src="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/a7acb787-460d-4188-b9a8-3801f975e9a4/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%233B82F6&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
                       title="Jonathan AI Agent Tool"
+                      delayMs={800}
                     />
                   </div>
                 </div>
