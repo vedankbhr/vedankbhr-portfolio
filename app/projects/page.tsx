@@ -6,7 +6,11 @@ import Link from "next/link"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { ArrowLeft, Bot, MessageSquare, Zap, Globe, Sparkles, ExternalLink, Scale, LayoutDashboard } from "lucide-react"
+import {
+  ArrowLeft, Bot, MessageSquare, Zap, Globe, Sparkles,
+  ExternalLink, Scale, LayoutDashboard, ShieldAlert,
+  CheckCircle2, FileText
+} from "lucide-react"
 
 /* ─────────────────────────────────────────────
    COMPONENTS
@@ -23,14 +27,14 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
   </motion.div>
 )
 
-/* ─── PERFORMANCE-OPTIMIZED IFRAME ─── */
+/* ─── PERFORMANCE-OPTIMIZED IFRAME FOR CHATBOTS ─── */
 function LiveIframe({ src, title, delayMs }: { src: string, title: string, delayMs: number }) {
   const [shouldMount, setShouldMount] = useState(false)
   const [isScrolling, setIsScrolling] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "200px" })
 
-  // 1. Wait for Framer Motion entry animation to finish before mounting the heavy iframe
+  // 1. Wait for Framer Motion entry animation to finish before mounting the iframe
   useEffect(() => {
     if (isInView) {
       const timer = setTimeout(() => setShouldMount(true), delayMs)
@@ -99,7 +103,6 @@ export default function Projects() {
           HERO SECTION
          ═══════════════════════════════════════════ */}
       <section className="pt-32 md:pt-48 pb-16 px-6 relative overflow-hidden">
-        {/* Modern grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
 
@@ -138,60 +141,94 @@ export default function Projects() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 md:gap-10">
 
-            {/* ── PROJECT 1: Coop AI (Featured Full Width) ── */}
-            <FadeIn delay={0.1} className="col-span-1 xl:col-span-2 flex flex-col h-full bg-muted/30 border border-border/50 rounded-3xl hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/5 transition-all duration-500 overflow-hidden group">
-              <div className="p-8 pb-6 lg:px-12 lg:pt-12">
-                <div className="flex items-start justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0">
-                      <Scale className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h2 className="text-3xl font-bold tracking-tight mb-1">Coop AI</h2>
-                      <p className="text-sm font-medium text-muted-foreground">AI-Powered Business & Legal Tech Platform</p>
-                    </div>
+            {/* ── PROJECT 1: Coop AI (Static Mockup + Link) ── */}
+            <FadeIn delay={0.1} className="col-span-1 xl:col-span-2 flex flex-col lg:flex-row bg-muted/30 border border-border/50 rounded-3xl hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/5 transition-all duration-500 overflow-hidden group">
+
+              {/* Info Side */}
+              <div className="p-8 lg:p-12 lg:w-5/12 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-border/50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="flex items-center gap-4 mb-6 relative z-10">
+                  <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0">
+                    <Scale className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h2 className="text-3xl font-bold tracking-tight mb-1">Coop AI</h2>
+                    <p className="text-sm font-medium text-emerald-600 dark:text-emerald-400">AI Legal Tech Platform</p>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full flex items-center gap-1.5"><LayoutDashboard className="h-3 w-3" /> Agentic Workspace</span>
-                  <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full flex items-center gap-1.5"><Zap className="h-3 w-3" /> Deterministic Actions</span>
-                  <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full flex items-center gap-1.5"><Globe className="h-3 w-3" /> Web App</span>
+
+                <div className="flex flex-wrap gap-2 mb-6 relative z-10">
+                  <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full flex items-center gap-1.5">
+                    <LayoutDashboard className="h-3 w-3" /> Agentic Workspace
+                  </span>
+                  <span className="text-xs font-medium px-2.5 py-1 bg-background border border-border/50 rounded-full flex items-center gap-1.5">
+                    <Zap className="h-3 w-3" /> Deterministic Actions
+                  </span>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-4xl">
+
+                <p className="text-muted-foreground leading-relaxed mb-8 relative z-10">
                   A comprehensive AI platform designed to move beyond the traditional "chat bubble." Coop AI utilizes a split-screen architecture and deterministic workflow buttons to automate document analysis, flag liabilities, and streamline business operations with verifiable citations.
                 </p>
+
+                <Button className="w-fit rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 gap-2 relative z-10" asChild>
+                  <a href="https://v0-ai-chat-business-platform-omega.vercel.app/" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4" /> Launch Live App
+                  </a>
+                </Button>
               </div>
 
-              <div className="px-8 pb-8 pt-0 lg:px-12 flex-1 flex flex-col">
-                {/* App Window UI Wrapper */}
-                <div className="w-full rounded-2xl overflow-hidden border border-border/50 bg-background mb-8 flex flex-col shadow-sm">
-                  {/* Mac-style Window Header */}
-                  <div className="h-10 bg-muted/50 border-b border-border/50 flex items-center px-4 gap-2 shrink-0">
-                    <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                    <div className="w-3 h-3 rounded-full bg-amber-400/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-400/80" />
-                    <div className="flex-1 text-center flex justify-center items-center">
-                      <span className="text-[10px] text-muted-foreground font-medium flex items-center gap-1.5">
-                        <Globe className="w-3 h-3" /> v0-ai-chat-business-platform.vercel.app
-                      </span>
+              {/* UI Mockup Side (Replaces Iframe to stop crashing) */}
+              <div className="p-8 lg:w-7/12 bg-background flex items-center justify-center relative overflow-hidden">
+                <div className="w-full max-w-lg rounded-xl border border-border/50 shadow-sm bg-muted/20 overflow-hidden flex flex-col h-[350px]">
+                  {/* Mockup Header */}
+                  <div className="h-10 border-b border-border/50 bg-background flex items-center px-4 gap-3">
+                    <div className="flex gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-border" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-border" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-border" />
+                    </div>
+                    <div className="flex-1 text-center text-xs font-medium text-muted-foreground flex items-center justify-center gap-1.5">
+                      <Globe className="w-3 h-3" /> app.coop-ai.com
                     </div>
                   </div>
-                  {/* The Optimized Iframe */}
-                  <div className="w-full h-[500px] md:h-[650px] relative bg-background">
-                    <LiveIframe
-                      src="https://v0-ai-chat-business-platform-omega.vercel.app/"
-                      title="Coop AI Platform"
-                      delayMs={600}
-                    />
+                  {/* Mockup Body */}
+                  <div className="flex-1 flex p-4 gap-4">
+                    {/* Document View */}
+                    <div className="flex-1 bg-background border border-border/50 rounded-lg p-4 space-y-3 opacity-80 shadow-sm">
+                      <div className="w-3/4 h-3 bg-muted rounded-full" />
+                      <div className="w-full h-2 bg-muted rounded-full" />
+                      <div className="w-full h-2 bg-muted rounded-full" />
+                      <div className="w-5/6 h-2 bg-muted rounded-full" />
+                      <div className="w-full h-2 bg-emerald-500/20 rounded-full mt-4 border border-emerald-500/30" />
+                      <div className="w-4/5 h-2 bg-emerald-500/20 rounded-full border border-emerald-500/30" />
+                      <div className="w-full h-2 bg-muted rounded-full mt-4" />
+                      <div className="w-2/3 h-2 bg-muted rounded-full" />
+                    </div>
+                    {/* Agent Sidebar */}
+                    <div className="w-1/3 flex flex-col gap-3">
+                      <div className="bg-background border border-border/50 rounded-lg p-3 shadow-sm">
+                        <div className="flex items-center gap-2 mb-2">
+                          <ShieldAlert className="w-3 h-3 text-amber-500" />
+                          <span className="text-[10px] font-bold">Liability Flag</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-muted rounded-full mb-1" />
+                        <div className="w-4/5 h-1.5 bg-muted rounded-full" />
+                      </div>
+                      <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3 shadow-sm">
+                        <div className="flex items-center gap-2 mb-2">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+                          <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">Redline</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-emerald-500/30 rounded-full mb-1" />
+                        <div className="w-full h-1.5 bg-emerald-500/30 rounded-full" />
+                      </div>
+                      <div className="mt-auto bg-background border border-border/50 rounded-lg p-2 flex items-center gap-2 shadow-sm">
+                        <FileText className="w-3 h-3 text-muted-foreground" />
+                        <div className="w-1/2 h-1.5 bg-muted rounded-full" />
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 mt-auto lg:w-1/2">
-                  <Button className="flex-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white" asChild>
-                    <a href="https://v0-ai-chat-business-platform-omega.vercel.app/" target="_blank" rel="noopener noreferrer">
-                      <LayoutDashboard className="mr-2 h-4 w-4" /> Open Web App
-                    </a>
-                  </Button>
                 </div>
               </div>
             </FadeIn>
@@ -238,7 +275,7 @@ export default function Projects() {
                     <LiveIframe
                       src="https://app.relevanceai.com/agents/d7b62b/0dd5f9a9-0d97-4b41-b3bb-6721b2a1407c/4b67f532-ff9e-4396-aa5f-ae6130d270d5/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%238B5CF6&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
                       title="Lucy AI Agent"
-                      delayMs={700}
+                      delayMs={600}
                     />
                   </div>
                 </div>
